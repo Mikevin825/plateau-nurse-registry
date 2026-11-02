@@ -1,0 +1,379 @@
+
+/* =================================
+   NURSE REGISTRATION PAGE
+================================= */
+
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+}
+
+.register-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 65px 25px 75px;
+  flex: 1;
+}
+
+/* =================================
+   PAGE HEADING
+================================= */
+
+.register-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.register-heading .portal-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--green);
+  font-size: 15px;
+}
+
+.register-heading h1 {
+  font-family: 'Manrope', sans-serif;
+  color: var(--navy);
+  font-size: clamp(30px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+
+.register-heading p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* =================================
+   REGISTRATION FORM
+================================= */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.register-section {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* SECTION HEADINGS */
+
+.register-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.register-section-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.register-section-heading h2 {
+  font-family: 'Manrope', sans-serif;
+  color: var(--navy);
+  font-size: 21px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.register-section-heading p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =================================
+   INPUT GRID
+================================= */
+
+.register-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px 22px;
+}
+
+.register-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.register-section .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-section .form-group label {
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.register-section .form-group input,
+.register-section .form-group select {
+  width: 100%;
+  min-width: 0;
+  min-height: 56px;
+  padding: 0 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  background: white;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.register-section .form-group input:focus,
+.register-section .form-group select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(22, 125, 104, 0.08);
+}
+
+.register-section .form-group input::placeholder {
+  color: #8492A2;
+  font-size: 15px;
+}
+
+.register-section .form-group input[type="file"] {
+  min-height: 58px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.register-section .form-group input[type="file"]::file-selector-button {
+  min-height: 38px;
+  margin-right: 12px;
+  padding: 7px 13px;
+  border: none;
+  border-radius: 6px;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* FIELD HINTS */
+
+.register-section .field-hint {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =================================
+   SELFIE NOTICE
+================================= */
+
+.upload-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 19px;
+  background: #F4F7FA;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--green);
+}
+
+.upload-notice svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.upload-notice strong {
+  display: block;
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.upload-notice p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =================================
+   CONSENT
+================================= */
+
+.consent-section {
+  background: #FBFCFD;
+}
+
+.consent-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.consent-checkbox input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  accent-color: var(--green);
+}
+
+.consent-checkbox span {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* =================================
+   SUBMISSION AREA
+================================= */
+
+.register-submit-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+  padding: 18px 0;
+  text-align: center;
+}
+
+.register-submit-area p {
+  max-width: 560px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.register-submit {
+  width: 100%;
+  max-width: 450px;
+  min-height: 58px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 8px;
+  background: var(--green);
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.register-submit:hover {
+  background: #116653;
+}
+
+.register-submit-area > span {
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.register-submit-area a {
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.register-submit-area a:hover {
+  text-decoration: underline;
+}
+
+/* =================================
+   RESPONSIVENESS
+================================= */
+
+@media (max-width: 650px) {
+  .register-container {
+    padding: 45px 17px 55px;
+  }
+
+  .register-section {
+    padding: 25px 19px;
+  }
+
+  .register-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .register-grid .full-width {
+    grid-column: auto;
+  }
+
+  .register-heading h1 {
+    font-size: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  .register-heading p {
+    font-size: 15px;
+  }
+
+  .register-section-heading {
+    align-items: flex-start;
+  }
+
+  .register-section-heading h2 {
+    font-size: 19px;
+  }
+
+  .register-section .form-group label {
+    font-size: 15px;
+  }
+
+  .register-section .form-group input,
+  .register-section .form-group select {
+    min-height: 54px;
+  }
+}
+
+@media (max-width: 380px) {
+  .register-section {
+    padding: 22px 15px;
+  }
+
+  .register-section-heading {
+    gap: 11px;
+  }
+
+  .register-section-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .register-heading h1 {
+    font-size: 27px;
+  }
+}
+
+.registration-message {
+  margin-top: 16px;
+  padding: 15px;
+  border: 1px solid #E8D6A8;
+  border-radius: 8px;
+  background: #FFF9E9;
+  color: #795B16;
+  font-size: 15px;
+  line-height: 1.6;
+}

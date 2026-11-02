@@ -1,0 +1,40 @@
+/* =================================
+   HOSPITAL AUTHENTICATION
+================================= */
+
+.hospital-auth-card {
+  border-top: 3px solid var(--navy);
+}
+
+.hospital-auth-card .hospital-icon {
+  color: var(--navy);
+  background: #EAF0F8;
+}
+
+.hospital-auth-card .auth-submit {
+  background: var(--navy);
+}
+
+.hospital-auth-card .auth-submit:hover {
+  background: var(--navy-light);
+}
+
+/* =================================
+   RESPONSIVE ADJUSTMENTS
+================================= */
+
+@media (max-width: 600px) {
+  .hospital-auth-card {
+    padding: 28px 22px;
+  }
+}
+
+.login-message {
+  padding: 13px 15px;
+  border: 1px solid #E8D6A8;
+  border-radius: 8px;
+  background: #FFF9E9;
+  color: #795B16;
+  font-size: 14px;
+  line-height: 1.6;
+}
