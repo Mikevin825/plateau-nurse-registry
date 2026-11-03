@@ -1,0 +1,602 @@
+.hr-dashboard {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 38px 42px 50px;
+}
+
+/* Heading */
+
+.hr-dashboard-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.hr-dashboard-eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.hr-dashboard-heading h1 {
+  margin: 0;
+  color: var(--navy);
+  font-family: 'Manrope', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.hr-dashboard-heading p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.hr-hospital-badge {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Summary cards */
+
+.hr-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.hr-summary-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hr-summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(20, 43, 70, 0.06);
+}
+
+.hr-summary-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hr-summary-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+}
+
+.hr-summary-icon.blue {
+  background: #eaf1ff;
+  color: #416fce;
+}
+
+.hr-summary-icon.green {
+  background: #e7f5ef;
+  color: #16866b;
+}
+
+.hr-summary-icon.orange {
+  background: #fff2e5;
+  color: #d88935;
+}
+
+.hr-summary-icon.red {
+  background: #fdecec;
+  color: #d45c5c;
+}
+
+.hr-summary-icon.purple {
+  background: #f1edff;
+  color: #8265c5;
+}
+
+.hr-summary-arrow {
+  color: #a7b2c0;
+}
+
+.hr-summary-value {
+  margin-bottom: 6px;
+  color: var(--navy);
+  font-family: 'Manrope', sans-serif;
+  font-size: 29px;
+  font-weight: 800;
+}
+
+.hr-summary-card h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.hr-summary-card p {
+  margin-top: 7px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Dashboard panels */
+
+.hr-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.85fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.hr-panel {
+  min-width: 0;
+  padding: 23px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+}
+
+.hr-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 23px;
+}
+
+.hr-panel-heading h2 {
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.hr-panel-heading p {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.hr-panel-heading-icon {
+  flex-shrink: 0;
+  color: var(--green);
+}
+
+/* Nurse table */
+
+.hr-recent-panel {
+  overflow: hidden;
+}
+
+.hr-panel-link,
+.hr-panel-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hr-panel-link:hover,
+.hr-panel-footer-link:hover {
+  color: var(--navy);
+}
+
+.hr-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.hr-nurse-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.hr-nurse-table th {
+  padding: 13px 12px;
+  background: #f5f8fb;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hr-nurse-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--navy);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.hr-nurse-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.hr-nurse-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hr-nurse-avatar {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #eaf1ff;
+  color: #416fce;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.hr-nurse-cell strong {
+  display: block;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hr-nurse-cell span {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.hr-nannm-id {
+  color: var(--text-secondary) !important;
+  font-size: 11px !important;
+}
+
+.hr-status,
+.hr-employment-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.status-active,
+.employment-confirmed {
+  background: #e7f5ef;
+  color: #16866b;
+}
+
+.status-warning {
+  background: #fff2e5;
+  color: #c27b2d;
+}
+
+.status-expired {
+  background: #fdecec;
+  color: #c94e4e;
+}
+
+.employment-pending {
+  background: #fff2e5;
+  color: #c27b2d;
+}
+
+/* Licence distribution */
+
+.hr-licence-total {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-bottom: 19px;
+}
+
+.hr-licence-total strong {
+  color: var(--navy);
+  font-family: 'Manrope', sans-serif;
+  font-size: 35px;
+  font-weight: 800;
+}
+
+.hr-licence-total span {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.hr-licence-bar {
+  height: 11px;
+  display: flex;
+  overflow: hidden;
+  gap: 3px;
+  margin-bottom: 22px;
+  border-radius: 10px;
+  background: #edf0f4;
+}
+
+.hr-licence-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.bar-active {
+  width: 79%;
+  background: #239b7c;
+}
+
+.bar-expiring {
+  width: 7%;
+  background: #e9a34d;
+}
+
+.bar-expired {
+  width: 5%;
+  background: #d96868;
+}
+
+.bar-pending {
+  flex: 1;
+  background: #8c83c7;
+}
+
+.hr-licence-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hr-licence-legend > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.hr-licence-legend strong {
+  margin-left: auto;
+  color: var(--navy);
+  font-size: 12px;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.dot-active {
+  background: #239b7c;
+}
+
+.dot-expiring {
+  background: #e9a34d;
+}
+
+.dot-expired {
+  background: #d96868;
+}
+
+.dot-pending {
+  background: #8c83c7;
+}
+
+/* Expiring licences */
+
+.hr-expiring-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hr-expiring-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hr-expiring-item:first-child {
+  padding-top: 0;
+}
+
+.hr-expiring-item:last-child {
+  border-bottom: none;
+}
+
+.hr-expiring-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #fff2e5;
+  color: #d88935;
+}
+
+.hr-expiring-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hr-expiring-info strong {
+  color: var(--navy);
+  font-size: 12px;
+}
+
+.hr-expiring-info span,
+.hr-expiring-info small {
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.hr-expiring-days {
+  margin-left: auto;
+  color: #c27b2d;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hr-panel-footer-link {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* Employment verification */
+
+.hr-employment-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 18px;
+  border: 1px solid #d6e9e2;
+  border-radius: 11px;
+  background: #f0f8f4;
+}
+
+.hr-employment-callout-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #dcefe7;
+  color: #16866b;
+}
+
+.hr-employment-callout strong {
+  color: #176b58;
+  font-size: 14px;
+}
+
+.hr-employment-callout p {
+  margin-top: 7px;
+  color: #587d72;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Dashboard disclaimer */
+
+.hr-dashboard-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 23px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f5f8fb;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.hr-dashboard-disclaimer svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--green);
+}
+
+/* Responsive layouts */
+
+@media (max-width: 1250px) {
+  .hr-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .hr-dashboard {
+    padding: 30px 24px 40px;
+  }
+
+  .hr-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .hr-dashboard {
+    padding: 25px 17px 35px;
+  }
+
+  .hr-dashboard-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hr-dashboard-heading h1 {
+    font-size: 29px;
+  }
+
+  .hr-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .hr-summary-card {
+    padding: 15px;
+  }
+
+  .hr-summary-value {
+    font-size: 25px;
+  }
+
+  .hr-summary-card h3 {
+    font-size: 12px;
+  }
+
+  .hr-panel {
+    padding: 17px;
+  }
+
+  .hr-panel-heading {
+    flex-wrap: wrap;
+  }
+
+  .hr-panel-link {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hr-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

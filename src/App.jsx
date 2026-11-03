@@ -12,6 +12,10 @@ import DigitalIDCard from "./pages/DigitalIDCard";
 import { Link } from "react-router-dom";
 import NurseNotifications from "./pages/NurseNotifications";
 import NurseLayout from "./components/nurse/NurseLayout";
+import HRLayout from "./components/hr/HRLayout";
+import HRDashboard from "./pages/hr/HRDashboard";
+import HRSectionPlaceholder from "./pages/hr/HRSectionPlaceholder";
+import HRNurseDirectory from "./pages/hr/HRNurseDirectory";
 
 function WelcomePage() {
   return (
@@ -169,7 +173,19 @@ function App() {
       </Route>
 
       {/* Hospital Portal */}
+      {/* Hospital authentication */}
       <Route path="/hospital/login" element={<HospitalLogin />} />
+
+      {/* HR Portal */}
+      <Route path="/hr" element={<HRLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<HRDashboard />} />
+        <Route path="nurses" element={<HRNurseDirectory />} />
+        <Route path="licences" element={<HRSectionPlaceholder />} />
+        <Route path="employment" element={<HRSectionPlaceholder />} />
+        <Route path="reports" element={<HRSectionPlaceholder />} />
+        <Route path="settings" element={<HRSectionPlaceholder />} />
+      </Route>
 
       {/* Public Verification */}
       <Route path="/verify" element={<PublicVerify />} />
