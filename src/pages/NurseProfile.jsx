@@ -1,14 +1,37 @@
-import {
-  UserRound,
-  ShieldCheck,
-  BriefcaseBusiness,
-  FileCheck,
-  Camera,
-} from 'lucide-react'
+import { UserRound, BriefcaseBusiness, FileCheck, Camera, ShieldCheck } from "lucide-react";
 
-import './NurseProfile.css'
+import "./NurseProfile.css"
+import useNurseProfile from "../hooks/useNurseProfile";
 
 function NurseProfile() {
+  const { nurse, loading, error } = useNurseProfile();
+
+  if (loading) {
+    return (
+      <div className="profile-page">
+        <main className="profile-content">
+          <div className="profile-page-heading">
+            <div>
+              <span className="profile-eyebrow">NURSE PORTAL</span>
+              <h1>My Professional Profile</h1>
+              <p>Loading your profile...</p>
+            </div>
+
+            <span className="profile-review-status">
+              <span></span>
+              Loading...
+            </span>
+          </div>
+        </main>
+      </div>
+    )
+  }
+  if (error || !nurse) return <div className="profile-page"><main className="profile-content"><p role="alert">{error || "We could not load your nurse record."}</p></main></div>;
+
+  const photoElement = nurse.photo
+    ? <img src={nurse.photo} alt={`${nurse.full_name} profile`} />
+    : <div className="profile-photo-placeholder"><UserRound size={42} /></div>;
+
   return (
     <div className="profile-page">
       <main className="profile-content">
@@ -21,16 +44,14 @@ function NurseProfile() {
 
           <span className="profile-review-status">
             <span></span>
-            Pending Verification
+            {nurse && nurse.record_status === "approved" ? "Verified" : "Pending Verification"}
           </span>
         </div>
 
         {/* Profile summary */}
         <section className="profile-summary-card">
           <div className="profile-photo-wrapper">
-            <div className="profile-photo-placeholder">
-              <UserRound size={42} />
-            </div>
+            {photoElement}
 
             <button
               type="button"
@@ -43,16 +64,17 @@ function NurseProfile() {
 
           <div className="profile-summary-info">
             <span className="profile-summary-label">NURSE PROFILE</span>
-            <h2>Profile awaiting approval</h2>
+            <h2>{nurse && nurse.full_name || "Profile awaiting approval"}</h2>
             <p>
-              Your registered name and photograph will appear here
-              after your details have been reviewed.
+              {nurse && nurse.record_status === "approved"
+                ? "Your details have been verified and approved."
+                : "Your registered name and photograph will appear here after your details have been reviewed."}
             </p>
           </div>
 
           <div className="profile-id-block">
             <span>NANNM REGISTRY ID</span>
-            <strong>Not yet issued</strong>
+            <strong>{nurse && nurse.nanm_id || "Not yet issued"}</strong>
           </div>
         </section>
 
@@ -68,23 +90,25 @@ function NurseProfile() {
               <p>Your basic identity and contact details</p>
             </div>
 
-            <span className="profile-section-status">Awaiting review</span>
+            <span className="profile-section-status">
+              {nurse && nurse.record_status === "approved" ? "Verified" : "Awaiting review"}
+            </span>
           </div>
 
           <div className="profile-fields-grid">
             <div className="profile-field">
               <span>Full legal name</span>
-              <strong>Pending verification</strong>
+              <strong>{nurse && nurse.full_name || "Pending verification"}</strong>
             </div>
 
             <div className="profile-field">
               <span>Email address</span>
-              <strong>Submitted during registration</strong>
+              <strong>{nurse.email || "Not provided"}</strong>
             </div>
 
             <div className="profile-field">
               <span>Phone number</span>
-              <strong>Submitted during registration</strong>
+              <strong>{nurse.phone || "Not provided"}</strong>
             </div>
 
             <div className="profile-field">
@@ -112,28 +136,34 @@ function NurseProfile() {
               <p>Your nursing qualification and licence information</p>
             </div>
 
-            <span className="profile-section-status">Awaiting review</span>
+            <span className="profile-section-status">
+              {nurse && nurse.record_status === "approved" ? "Verified" : "Awaiting review"}
+            </span>
           </div>
 
           <div className="profile-fields-grid">
             <div className="profile-field">
               <span>NMCN Licence Number</span>
-              <strong>Pending verification</strong>
+              <strong>{nurse && nurse.licence_number || "Pending verification"}</strong>
             </div>
 
             <div className="profile-field">
               <span>Licence expiry date</span>
-              <strong>Pending verification</strong>
+              <strong>
+                {nurse && nurse.licence_expiry
+                  ? new Date(nurse.licence_expiry).toLocaleDateString()
+                  : "Pending verification"}
+              </strong>
             </div>
 
             <div className="profile-field">
               <span>Professional cadre</span>
-              <strong>Pending verification</strong>
+              <strong>{nurse && nurse.cadre || "Pending verification"}</strong>
             </div>
 
             <div className="profile-field">
               <span>Specialty</span>
-              <strong>Pending verification</strong>
+              <strong>{nurse && nurse.specialty || "Pending verification"}</strong>
             </div>
           </div>
         </section>
@@ -150,23 +180,25 @@ function NurseProfile() {
               <p>Your declared workplace and current assignment</p>
             </div>
 
-            <span className="profile-section-status">Awaiting review</span>
+            <span className="profile-section-status">
+              {nurse && nurse.record_status === "approved" ? "Verified" : "Awaiting review"}
+            </span>
           </div>
 
           <div className="profile-fields-grid">
             <div className="profile-field">
               <span>Hospital / Institution</span>
-              <strong>Pending verification</strong>
+              <strong>{nurse && nurse.employer || "Pending verification"}</strong>
             </div>
 
             <div className="profile-field">
               <span>Department</span>
-              <strong>Pending verification</strong>
+              <strong>Not provided</strong>
             </div>
 
             <div className="profile-field">
               <span>Ward / Unit</span>
-              <strong>Pending verification</strong>
+              <strong>{nurse && nurse.ward || "Pending verification"}</strong>
             </div>
           </div>
         </section>
@@ -178,9 +210,9 @@ function NurseProfile() {
           <div>
             <h3>Why can't I edit my information?</h3>
             <p>
-              Your submitted details are currently awaiting review.
-              Once an authorised officer completes verification,
-              available profile update options will be displayed.
+              {nurse && nurse.record_status === "approved"
+                ? "Your details have been verified and approved. Update options will be available."
+                : "Your submitted details are currently awaiting review. Once an authorised officer completes verification, available profile update options will be displayed."}
             </p>
           </div>
         </section>

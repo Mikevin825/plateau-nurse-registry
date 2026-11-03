@@ -22,8 +22,11 @@
   transition: color 0.2s ease;
 }
 
+@media (hover: hover) {
+
 .licence-back:hover {
   color: var(--green);
+}
 }
 
 .licence-brand {

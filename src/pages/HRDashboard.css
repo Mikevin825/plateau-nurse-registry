@@ -1,0 +1,12 @@
+/* HR Dashboard Styles */
+.hr-dashboard {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+}
+
+.hr-dashboard-header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}

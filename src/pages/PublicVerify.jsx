@@ -9,26 +9,35 @@ import {
   BadgeCheck,
 } from "lucide-react";
 import "./PublicVerify.css";
+import { verifyNursePublic } from "../apiService";
 
 function PublicVerify() {
   const [registryId, setRegistryId] = useState("");
-  const [verificationMessage, setVerificationMessage] = useState("");
-  const [submittedId, setSubmittedId] = useState("");
+  const [result, setResult] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setResult(null);
+    setErrorMessage("");
 
     const cleanId = registryId.trim().toUpperCase();
 
     if (!cleanId) {
+      setLoading(false);
       return;
     }
 
-    setSubmittedId(cleanId);
-
-    setVerificationMessage(
-      "Live registry verification is not yet available. The submitted ID has not been checked against the official registry.",
-    );
+    try {
+      const result = await verifyNursePublic(cleanId);
+      setResult(result);
+    } catch (error) {
+      setErrorMessage(error.message || "Nurse not found. Check the NANNM Registry ID and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -103,9 +112,9 @@ function PublicVerify() {
               </span>
             </div>
 
-            <button type="submit" className="verify-submit">
+            <button type="submit" className="verify-submit" disabled={loading}>
               <Search size={18} />
-              Verify nurse
+              {loading ? " Verifying..." : "Verify nurse"}
             </button>
           </form>
 
@@ -122,19 +131,22 @@ function PublicVerify() {
         </div>
 
         {/* Verification Result */}
-        {verificationMessage ? (
+        {result || errorMessage ? (
           <div className="verify-result-placeholder" role="status">
             <div className="placeholder-icon">
               <LockKeyhole size={23} />
             </div>
 
-            <h3>Verification unavailable</h3>
-
-            <p>
-              Registry ID submitted: <strong>{submittedId}</strong>
-            </p>
-
-            <p>{verificationMessage}</p>
+            <h3>{result ? "Verification results" : "Nurse not found"}</h3>
+            {result ? (
+              <div className="verify-result-details">
+                <p>NANNM ID: <strong>{result.nanm_id}</strong></p>
+                <p>Name: <strong>{result.full_name}</strong></p>
+                <p>Licence status: <strong>{result.licence_status}</strong></p>
+                <p>Employer: <strong>{result.employer || "Not disclosed"}</strong></p>
+                {result.photo_url && <img src={result.photo_url} alt={`${result.full_name} registry photo`} />}
+              </div>
+            ) : <p role="alert">{errorMessage}</p>}
           </div>
         ) : (
           <div className="verify-result-placeholder">
@@ -150,6 +162,7 @@ function PublicVerify() {
             </p>
           </div>
         )}
+
       </section>
 
       {/* Footer */}
@@ -160,7 +173,7 @@ function PublicVerify() {
         </p>
       </footer>
     </main>
-  );
+  )
 }
 
-export default PublicVerify;
+export default PublicVerify

@@ -27,8 +27,11 @@
   font-size: 15px;
 }
 
+@media (hover: hover) {
+
 .digital-id-back:hover {
   color: var(--green);
+}
 }
 
 .digital-id-header-label {
@@ -98,6 +101,9 @@
   background: linear-gradient(125deg, #142D4E 0%, #1D4268 65%, #167D68 140%);
   color: #FFFFFF;
   box-shadow: 0 18px 40px rgba(20, 45, 78, 0.17);
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
 }
 
 .digital-card-top {

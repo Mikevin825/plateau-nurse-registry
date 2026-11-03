@@ -97,9 +97,12 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+@media (hover: hover) {
+
 .hr-nav-link:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+}
 }
 
 .hr-nav-link.active {
@@ -118,8 +121,11 @@
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+@media (hover: hover) {
+
 .hr-logout-link:hover {
   color: #ffb7b7;
+}
 }
 
 /* Collapsed sidebar */
@@ -183,9 +189,12 @@
   cursor: pointer;
 }
 
+@media (hover: hover) {
+
 .hr-menu-button:hover,
 .hr-mobile-menu-button:hover {
   background: var(--green-light);
+}
 }
 
 .hr-mobile-menu-button {
@@ -306,4 +315,17 @@
     gap: 7px;
     font-size: 14px;
   }
+}
+
+/* HR Layout Styles */
+.hr-layout {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+}
+
+.hr-header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }

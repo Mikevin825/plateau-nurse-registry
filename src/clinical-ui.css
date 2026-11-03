@@ -1,0 +1,606 @@
+/* Shared visual layer for the public, nurse, hospital and registry staff routes. */
+:root {
+  --navy: #12354a;
+  --navy-light: #1c5268;
+  --green: #087f70;
+  --green-light: #e4f4ef;
+  --background: #f3f7f7;
+  --surface: #fff;
+  --text-primary: #183447;
+  --text-secondary: #526a78;
+  --border: #d5e1e5;
+  --clinical-shadow: 0 1px 2px rgb(14 50 64 / 5%), 0 10px 28px rgb(14 50 64 / 6%);
+  --clinical-shadow-raised: 0 4px 10px rgb(14 50 64 / 8%), 0 18px 42px rgb(14 50 64 / 10%);
+}
+
+html { scroll-behavior: smooth; }
+body { color: var(--text-primary); background: var(--background); }
+::selection { color: #103b45; background: #bce9dc; }
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #15947f;
+  outline-offset: 3px;
+}
+
+button:disabled { cursor: not-allowed; opacity: .62; }
+
+/* Shared card and content surfaces. */
+:is(.portal-card, .auth-card, .register-section, .verify-card, .verify-result-placeholder,
+  .stat-card, .dashboard-panel, .dashboard-notice, .profile-summary-card,
+  .profile-information-card, .profile-review-notice, .licence-panel, .digital-id-card,
+  .digital-id-information, .notifications-summary, .notifications-panel,
+  .admin-summary-card, .admin-panel, .hr-summary-card, .hr-panel,
+  .hr-directory-summary-card, .hr-directory-panel, .hr-licence-summary-card,
+  .hr-licence-panel, .hr-employment-summary-card, .hr-employment-panel,
+  .hr-reports-panel, .hr-settings-card, .hr-directory-modal, .hr-directory-confirm-dialog) {
+  border-color: transparent;
+  border-radius: 16px;
+  box-shadow: var(--clinical-shadow);
+}
+
+.auth-card { padding: clamp(28px, 4vw, 42px); }
+.auth-heading h1, .register-heading h1, .verify-heading h1,
+.dashboard-welcome h1, .profile-page-heading h1, .licence-heading h1,
+.digital-id-heading h1, .notifications-heading h1,
+.admin-page-heading h1, .hr-dashboard-heading h1,
+.hr-directory-heading h1, .hr-licence-heading h1,
+.hr-employment-heading h1, .hr-reports-header h1, .hr-settings-header h1 {
+  color: var(--navy);
+  letter-spacing: -.035em;
+  line-height: 1.16;
+}
+
+.auth-navbar, .navbar {
+  min-height: 76px;
+  padding-inline: max(24px, calc((100vw - 1240px) / 2));
+  background: rgb(255 255 255 / 94%);
+  border-bottom-color: var(--border);
+}
+.brand-icon { border-radius: 14px; color: #067363; background: #e4f4ef; }
+.brand-text h2 { color: var(--navy); }
+.brand-text span { color: #526a78; }
+.back-link { min-height: 44px; color: #465f6e; }
+@media (hover: hover) {
+.back-link:hover { color: var(--green); }
+}
+
+/* Welcome page: clear actions for each audience, public and staff. */
+.welcome-page { background: radial-gradient(ellipse at 50% -22%, #e2f2ee 0, transparent 58%), var(--background); }
+.welcome-content { max-width: 1120px; padding-top: clamp(56px, 8vw, 96px); }
+.welcome-heading { max-width: 790px; margin-bottom: clamp(40px, 6vw, 68px); }
+.welcome-heading h1 { font-size: clamp(38px, 5.3vw, 64px); letter-spacing: -.045em; line-height: 1.08; }
+.welcome-heading h1 span { color: #087f70; }
+.welcome-heading p { max-width: 620px; color: #526a78; font-size: 18px; line-height: 1.7; }
+.eyebrow, .portal-label { color: #087363; letter-spacing: .11em; }
+.section-heading { margin-bottom: 20px; }
+.section-heading h2 { font-size: 24px; letter-spacing: -.025em; }
+.portal-grid { gap: 20px; }
+.portal-card { min-height: 340px; padding: clamp(24px, 3vw, 34px); }
+.portal-icon { border-radius: 16px; }
+.portal-info h3 { letter-spacing: -.025em; }
+.portal-info p { color: #526a78; }
+.portal-button { min-height: 52px; border-radius: 10px; }
+.public-verification { border-color: #d5e1e5; border-radius: 14px; background: #eaf4f2; }
+.site-footer, .auth-footer { border-color: var(--border); }
+
+/* Forms and action states shared across registration, authentication and review. */
+.auth-container { padding-block: clamp(34px, 6vw, 64px); }
+.auth-card { border-top: 3px solid #087f70; }
+.auth-form { gap: 20px; }
+.auth-form > label { display: flex; flex-direction: column; gap: 8px; color: #183c50; font-size: 15px; font-weight: 700; }
+.form-group { gap: 8px; }
+.form-group label, .register-section .form-group label { color: #183c50; font-size: 15px; }
+:is(.form-group input, .form-group select, .form-group textarea,
+  .register-grid input, .register-grid select, .register-grid textarea,
+  .auth-form > label input, .auth-form > label select,
+  .hr-directory-search input, .hr-licence-search input,
+  .hr-employment-search input, .hr-reports-toolbar input, .hr-reports-toolbar select,
+  .hr-directory-toolbar select, .hr-licence-toolbar select) {
+  min-height: 48px;
+  border: 1px solid #9aafb9;
+  border-radius: 9px;
+  background: #fff;
+  color: #183447;
+}
+.input-wrapper { min-height: 52px; border-color: #9aafb9; border-radius: 10px; }
+.input-wrapper input { height: 50px; }
+.input-wrapper:focus-within { border-color: #087f70; box-shadow: 0 0 0 3px rgb(8 127 112 / 16%); }
+.auth-submit, .register-submit, .verify-submit, .digital-id-download,
+.hr-directory-table button, .hr-employment-table button {
+  min-height: 48px;
+  border-radius: 10px;
+  background: #087f70;
+  transition: background-color 150ms ease, scale 150ms ease-out;
+}
+@media (hover: hover) {
+.auth-submit:hover, .register-submit:hover, .verify-submit:hover,
+.digital-id-download:hover, .hr-directory-table button:hover, .hr-employment-table button:hover { background: #06695d; }
+}
+.hospital-auth-card .auth-submit { background: #174b62; }
+@media (hover: hover) {
+.hospital-auth-card .auth-submit:hover { background: #103b50; }
+}
+.auth-submit:not(:disabled):active, .register-submit:not(:disabled):active,
+.verify-submit:not(:disabled):active, .portal-button:not(:disabled):active,
+.digital-id-download:not(:disabled):active { scale: .96; }
+.login-message, .registration-message { border-radius: 10px; }
+.auth-bottom-text a { color: #087363; font-weight: 700; }
+.register-container { max-width: 1020px; }
+.register-section { padding: clamp(22px, 3vw, 34px); }
+.register-grid { column-gap: 24px; row-gap: 20px; }
+
+/* Public verification: search first, result immediately below, privacy visible. */
+.verify-container { max-width: 940px; }
+.verify-heading { max-width: 680px; }
+.verify-heading h1 { font-size: clamp(32px, 4vw, 46px); }
+.verify-card { padding: clamp(24px, 4vw, 38px); }
+.verify-submit { justify-content: center; gap: 10px; }
+.verify-result-placeholder { background: #fff; border-style: solid; text-align: left; }
+.verify-result-placeholder h3 { font-size: 20px; }
+.verify-result-details { display: grid; gap: 10px; margin-top: 18px; }
+.verify-result-details p { margin: 0; }
+.verify-result-details img { width: 112px; height: 112px; object-fit: cover; border-radius: 12px; outline: 1px solid oklch(0 0 0 / .1); outline-offset: -1px; }
+
+/* Nurse workspace pages. */
+.nurse-sidebar, .hr-sidebar, .admin-sidebar { background: #10394b; }
+.nurse-sidebar, .hr-sidebar, .admin-sidebar { padding-top: 24px; }
+.nurse-nav-link, .hr-nav-link, .admin-nav-link { min-height: 46px; border-radius: 10px; }
+.nurse-nav-link.active, .hr-nav-link.active, .admin-nav-link.active { background: rgb(155 228 210 / 16%); box-shadow: inset 3px 0 #71d2b8; }
+.nurse-nav-link.active svg, .hr-nav-link.active svg, .admin-nav-link.active svg { color: #a1ead5; }
+:is(.nurse-topbar, .hr-topbar, .admin-topbar) { min-height: 72px; padding-inline: clamp(18px, 3vw, 38px); box-shadow: 0 1px 4px rgb(14 50 64 / 4%); }
+:is(.nurse-page-content, .hr-page-content, .admin-page-content) { padding: clamp(20px, 3vw, 36px); }
+.dashboard-content, .profile-content, .licence-content, .digital-id-container, .notifications-container { max-width: 1440px; margin-inline: auto; padding: 0; }
+:is(.dashboard-stats, .admin-summary-grid, .hr-summary-grid) { gap: 16px; }
+:is(.stat-card, .admin-summary-card, .hr-summary-card) { border-radius: 14px; }
+@media (hover: hover) {
+.stat-card:hover, .hr-summary-card:hover { transform: none; }
+}
+:is(.dashboard-panel, .panel-heading, .profile-information-card, .licence-panel, .digital-id-information, .notifications-panel) h2 { letter-spacing: -.02em; }
+.profile-summary-card { padding: clamp(22px, 3vw, 32px); }
+.profile-fields-grid, .licence-details-grid, .digital-id-info-grid { gap: 16px; }
+.profile-field, .licence-details-grid > div, .digital-id-info-item { border-radius: 10px; }
+.digital-id-card { overflow: hidden; }
+.digital-card-photo img, .digital-card-qr img { outline: 1px solid oklch(0 0 0 / .1); outline-offset: -1px; }
+.notifications-list { gap: 10px; }
+.notification-item { border-radius: 12px; }
+
+/* Hospital and super-admin data workspaces: consistent page rhythm and readable tables. */
+.hr-dashboard, .admin-dashboard, .hr-directory-page, .hr-licence-page,
+.hr-employment-page, .hr-reports-page, .hr-settings-page { max-width: 1560px; margin-inline: auto; padding: 0; }
+:is(.admin-page-heading, .hr-dashboard-heading, .hr-directory-heading,
+  .hr-licence-heading, .hr-employment-heading, .hr-reports-header,
+  .hr-settings-header) { margin-bottom: 26px; }
+:is(.admin-page-heading h1, .hr-dashboard-heading h1, .hr-directory-heading h1,
+  .hr-licence-heading h1, .hr-employment-heading h1,
+  .hr-reports-header h1, .hr-settings-header h1) { font-size: clamp(28px, 3vw, 36px); }
+:is(.admin-panel, .hr-panel, .hr-directory-panel, .hr-licence-panel, .hr-employment-panel,
+  .hr-reports-panel, .hr-settings-card) { padding: clamp(18px, 2.5vw, 26px); }
+:is(.admin-table-wrapper, .hr-table-wrapper, .hr-directory-table-wrapper,
+  .hr-licence-table-wrapper, .hr-employment-table-wrapper, .hr-reports-table-wrapper) {
+  border-radius: 10px;
+  overscroll-behavior: contain;
+}
+:is(.admin-table, .hr-nurse-table, .hr-directory-table, .hr-licence-table,
+  .hr-employment-table, .hr-reports-table) th { background: #edf4f4; color: #395666; }
+@media (hover: hover) {
+:is(.admin-table, .hr-nurse-table, .hr-directory-table, .hr-licence-table,
+  .hr-employment-table, .hr-reports-table) tbody tr:hover { background: #f4f9f8; }
+}
+.hr-directory-modal-overlay { overscroll-behavior: contain; }
+:is(.hr-directory-modal, .hr-directory-confirm-dialog) { max-height: min(90vh, 760px); overflow-y: auto; overscroll-behavior: contain; }
+.admin-dashboard > article.admin-panel, .hr-dashboard > article.hr-directory-panel { margin-bottom: 16px; }
+.admin-dashboard > article.admin-panel > button, .hr-directory-panel > button,
+.hr-directory-confirm-actions button { min-height: 44px; padding: 0 16px; border: 0; border-radius: 9px; background: #087f70; color: #fff; font-weight: 700; }
+.admin-dashboard > article.admin-panel > button:disabled,
+.hr-directory-panel > button:disabled { opacity: .6; }
+:is(.admin-dashboard, .hr-dashboard, .hr-directory-page, .hr-licence-page, .hr-employment-page) [role="alert"] {
+  padding: 12px 15px;
+  border-left: 4px solid #b53e46;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #712b32;
+}
+
+@media (hover: hover) {
+  .portal-card:hover { transform: translateY(-3px); box-shadow: var(--clinical-shadow-raised); }
+  :is(.nurse-nav-link, .hr-nav-link, .admin-nav-link):hover { background: rgb(255 255 255 / 10%); }
+}
+
+@media (max-width: 900px) {
+  :is(.dashboard-lower-grid, .admin-dashboard-grid, .hr-dashboard-grid) { grid-template-columns: minmax(0, 1fr); }
+  .hr-summary-grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .admin-summary-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .auth-navbar, .navbar { min-height: 68px; padding-inline: 16px; }
+  .welcome-content { padding: 48px 18px 42px; }
+  .welcome-heading { margin-bottom: 40px; }
+  .welcome-heading h1 { font-size: clamp(36px, 10vw, 48px); }
+  .portal-grid { grid-template-columns: minmax(0, 1fr); }
+  .portal-card { min-height: 0; padding: 24px; }
+  .portal-icon { margin-bottom: 20px; }
+  .portal-info p { max-width: none; }
+  .site-footer { align-items: center; text-align: center; }
+  :is(.nurse-page-content, .hr-page-content, .admin-page-content) { padding: 18px 14px 26px; }
+  :is(.admin-page-heading, .hr-dashboard-heading, .hr-directory-heading,
+    .hr-licence-heading, .hr-employment-heading, .hr-reports-header,
+    .hr-settings-header) { align-items: flex-start; flex-direction: column; }
+  :is(.hr-hospital-badge, .hr-directory-hospital, .hr-licence-workspace, .hr-employment-workspace) { max-width: 100%; white-space: normal; }
+  :is(.hr-summary-grid, .admin-summary-grid) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :is(.dashboard-stats, .hr-directory-summary, .hr-licence-summary, .hr-employment-summary) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-topbar, .hr-topbar, .nurse-topbar { padding-inline: 14px; }
+}
+
+@media (max-width: 420px) {
+  .brand-text h2 { font-size: 16px; }
+  .brand-text span { font-size: 11px; }
+  .back-link { font-size: 14px; }
+  :is(.hr-summary-grid, .admin-summary-grid, .dashboard-stats, .hr-directory-summary,
+    .hr-licence-summary, .hr-employment-summary) { grid-template-columns: minmax(0, 1fr); }
+  .welcome-heading p { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .portal-card, .nurse-sidebar, .hr-sidebar, .admin-sidebar {
+    transition-property: opacity;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (hover: hover) {
+  .portal-card:hover { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 760px) {
+  .nurse-sidebar, .hr-sidebar, .admin-sidebar { transition-property: opacity; }
+  .nurse-shell:not(.mobile-sidebar-open) .nurse-sidebar,
+  .hr-shell:not(.mobile-sidebar-open) .hr-sidebar,
+  .admin-shell:not(.mobile-sidebar-open) .admin-sidebar { opacity: 0; }
+  .nurse-shell.mobile-sidebar-open .nurse-sidebar,
+  .hr-shell.mobile-sidebar-open .hr-sidebar,
+  .admin-shell.mobile-sidebar-open .admin-sidebar { opacity: 1; }
+}
+
+@media (forced-colors: active) {
+  :is(.portal-card, .auth-card, .register-section, .verify-card,
+    .stat-card, .dashboard-panel, .profile-summary-card, .profile-information-card,
+    .licence-panel, .digital-id-card, .digital-id-information,
+    .notifications-panel, .admin-summary-card, .admin-panel, .hr-summary-card,
+    .hr-panel, .hr-directory-panel, .hr-licence-panel, .hr-employment-panel,
+    .hr-reports-panel, .hr-settings-card) { border: 1px solid CanvasText; }
+}
+
+/* Full public landing page, from the primary action through service details. */
+.welcome-page { display: block; background: #f4f8f7; }
+.navbar { position: relative; z-index: 2; max-width: none; padding-inline: max(22px, calc((100vw - 1200px) / 2)); }
+.landing-nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); color: #405c6b; font-size: 14px; font-weight: 650; }
+.landing-nav a { min-height: 44px; display: inline-flex; align-items: center; gap: 7px; }
+.landing-nav-verify { color: #087363; }
+@media (hover: hover) {
+  .landing-nav a:hover, .portal-text-link:hover { color: #055d53; text-decoration: underline; }
+}
+
+.landing-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+  align-items: center;
+  gap: clamp(36px, 7vw, 92px);
+  width: min(1200px, calc(100% - 48px));
+  min-height: 560px;
+  margin: 0 auto;
+  padding: 66px 0 72px;
+}
+.landing-hero-copy { max-width: 650px; }
+.landing-hero-copy .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 22px; }
+.landing-hero-copy .status-dot { width: 8px; height: 8px; box-shadow: 0 0 0 4px #d9efe8; }
+.landing-hero h1 { max-width: 650px; margin: 0 0 20px; color: #12354a; font: 800 clamp(42px, 5.5vw, 66px)/1.04 'Manrope', sans-serif; letter-spacing: -.055em; }
+.landing-hero h1 span { color: #087f70; }
+.landing-hero-copy > p:not(.landing-login-hint) { max-width: 550px; margin: 0; color: #526a78; font-size: 18px; line-height: 1.7; }
+.landing-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
+.landing-primary-action, .landing-secondary-action { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 19px; border-radius: 10px; font-size: 15px; font-weight: 750; }
+.landing-primary-action { color: #fff; background: #087f70; box-shadow: 0 5px 14px rgb(8 127 112 / 17%); transition: background-color 150ms ease, scale 150ms ease-out; }
+.landing-secondary-action { color: #17465a; background: #fff; box-shadow: inset 0 0 0 1px #cbdcde; transition: background-color 150ms ease, scale 150ms ease-out; }
+@media (hover: hover) {
+  .landing-primary-action:hover { background: #06695d; }
+  .landing-secondary-action:hover { background: #eaf4f2; }
+}
+.landing-primary-action:active, .landing-secondary-action:active { scale: .96; }
+.landing-login-hint { margin: 17px 0 0; color: #526a78; font-size: 14px; }
+.landing-login-hint a { color: #087363; font-weight: 750; text-decoration: underline; text-underline-offset: 3px; }
+
+.landing-hero-art { position: relative; display: grid; min-height: 390px; place-items: center; isolation: isolate; }
+.landing-hero-art::before { position: absolute; z-index: -1; width: min(100%, 410px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #d8eee8 0 42%, #e7f3ef 42% 60%, transparent 60%); content: ''; }
+.hero-orbit { position: absolute; z-index: -1; width: 360px; height: 220px; border: 1px solid rgb(8 127 112 / 13%); border-radius: 50%; transform: rotate(-28deg); }
+.hero-orbit-two { width: 400px; height: 265px; transform: rotate(34deg); }
+.hero-id-card { width: min(100%, 390px); padding: 24px; border: 1px solid rgb(255 255 255 / 76%); border-radius: 20px; background: #fff; box-shadow: 0 22px 55px rgb(23 65 77 / 16%), 0 3px 10px rgb(23 65 77 / 7%); transform: rotate(-2deg); }
+.hero-card-top { display: flex; align-items: center; gap: 10px; padding-bottom: 18px; border-bottom: 1px solid #e5eeee; }
+.hero-card-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; color: #087f70; background: #e5f4ef; }
+.hero-card-top > div:nth-child(2) { display: grid; gap: 2px; color: #12354a; font-size: 11px; letter-spacing: .08em; }
+.hero-card-top > div:nth-child(2) span { color: #607987; font-size: 10px; letter-spacing: .12em; }
+.hero-card-check { margin-left: auto; color: #087f70; }
+.hero-card-person { display: flex; align-items: center; gap: 14px; padding: 22px 0; }
+.hero-card-avatar { width: 62px; height: 62px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 17px; color: #377b79; background: #e7f2ef; }
+.hero-card-person > div:last-child { display: grid; gap: 4px; }
+.hero-card-person span, .hero-card-status > span { color: #667f8b; font-size: 10px; font-weight: 750; letter-spacing: .09em; }
+.hero-card-person strong { color: #173b4d; font: 750 17px 'Manrope', sans-serif; }
+.hero-card-person small { color: #657c87; font-size: 12px; }
+.hero-card-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 14px; border-radius: 10px; background: #f3f8f7; }
+.hero-card-status strong { display: inline-flex; align-items: center; gap: 5px; color: #087363; font-size: 12px; }
+.hero-card-status i { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: #14866f; }
+.hero-card-code { display: grid; grid-template-columns: repeat(16, 1fr); gap: 3px; width: 72px; height: 25px; margin: 17px 0 0 auto; }
+.hero-card-code i { background: #244b5a; }
+.hero-card-code i:nth-child(3n) { background: transparent; }
+.hero-card-code i:nth-child(4n) { height: 16px; }
+.hero-float-note { position: absolute; right: -18px; bottom: 24px; display: flex; align-items: center; gap: 9px; max-width: 250px; padding: 13px 16px; border: 1px solid #e1ebea; border-radius: 12px; color: #315b66; background: #fff; box-shadow: var(--clinical-shadow); font-size: 12px; font-weight: 700; }
+.hero-float-note svg { flex: 0 0 auto; color: #087f70; }
+
+.landing-assurance { display: grid; grid-template-columns: repeat(3, 1fr); width: min(1200px, calc(100% - 48px)); margin: 0 auto; padding: 20px 0; border-top: 1px solid #dce8e7; border-bottom: 1px solid #dce8e7; }
+.landing-assurance > div { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 42px; color: #385867; font-size: 14px; font-weight: 650; }
+.landing-assurance > div + div { border-left: 1px solid #dce8e7; }
+.landing-assurance svg { color: #087f70; }
+
+.landing-section { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 92px 0; }
+.landing-section-heading { max-width: 690px; margin: 0 auto 34px; text-align: center; }
+.landing-section-heading .eyebrow, .landing-how-copy .eyebrow { margin-bottom: 14px; }
+.landing-section-heading h2, .landing-how-copy h2, .landing-verify-cta h2 { margin: 0; color: #12354a; font: 800 clamp(28px, 3.4vw, 40px)/1.15 'Manrope', sans-serif; letter-spacing: -.04em; }
+.landing-section-heading p, .landing-how-copy > p, .landing-verify-cta p { margin: 12px 0 0; color: #526a78; font-size: 16px; line-height: 1.65; }
+.portal-grid { gap: 20px; }
+.portal-card { min-height: 330px; padding: 30px; }
+.portal-card .portal-info h3 { margin-top: 12px; }
+.portal-card .portal-info p { max-width: 430px; }
+.portal-card .portal-button { margin-top: 22px; }
+.portal-text-link { min-height: 42px; display: inline-flex; align-items: center; margin-top: 7px; color: #087363; font-size: 14px; font-weight: 700; text-underline-offset: 3px; }
+.portal-footer { display: none; }
+
+.landing-how { display: grid; grid-template-columns: minmax(230px, .75fr) minmax(0, 1.25fr); align-items: start; gap: clamp(34px, 7vw, 90px); width: 100%; max-width: none; padding: 78px max(24px, calc((100vw - 1120px) / 2)); background: #eaf3f1; }
+.landing-how-copy { max-width: 365px; padding-top: 12px; }
+.landing-how-copy > p { font-size: 15px; }
+.landing-steps { display: grid; gap: 12px; }
+.landing-step { display: grid; grid-template-columns: 34px 44px minmax(0, 1fr); align-items: start; gap: 14px; padding: 19px; border-radius: 14px; background: rgb(255 255 255 / 82%); }
+.landing-step-number { padding-top: 10px; color: #728994; font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.landing-step-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; color: #087f70; background: #e3f2ed; }
+.landing-step h3 { margin: 0; color: #173b4d; font: 750 16px 'Manrope', sans-serif; }
+.landing-step p { margin: 5px 0 0; color: #58717d; font-size: 14px; line-height: 1.55; }
+
+.landing-verify-cta { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; align-items: center; gap: 20px; width: min(1120px, calc(100% - 48px)); margin: 76px auto; padding: 30px; border-radius: 18px; color: #fff; background: #123d50; box-shadow: var(--clinical-shadow); }
+.landing-verify-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 15px; color: #b7e9d9; background: rgb(255 255 255 / 10%); }
+.landing-verify-cta .eyebrow { margin-bottom: 8px; color: #a6e0cf; font-size: 11px; }
+.landing-verify-cta h2 { color: #fff; font-size: clamp(22px, 2.5vw, 29px); }
+.landing-verify-cta p { margin-top: 5px; color: #d1e0e2; font-size: 14px; }
+.landing-verify-cta .landing-primary-action { background: #087f70; }
+
+.site-footer { display: grid; grid-template-columns: minmax(260px, 1.5fr) repeat(2, minmax(150px, .7fr)); gap: 40px; min-height: 0; padding: 44px max(24px, calc((100vw - 1120px) / 2)) 20px; border-top: 1px solid #dce8e7; text-align: left; }
+.landing-footer-main { max-width: 340px; }
+.landing-footer-main .brand-icon { width: 42px; height: 42px; }
+.landing-footer-main .brand-text h2 { font-size: 17px; }
+.landing-footer-main .brand-text span { font-size: 11px; }
+.landing-footer-main > p { margin: 15px 0 0; color: #5a737f; font-size: 14px; line-height: 1.65; }
+.landing-footer-links { display: grid; align-content: start; justify-items: start; gap: 10px; color: #58717d; font-size: 14px; }
+.landing-footer-links strong { margin: 5px 0; color: #173b4d; font-size: 13px; }
+.landing-footer-links a { min-height: 30px; display: inline-flex; align-items: center; }
+@media (hover: hover) {
+  .landing-footer-links a:hover { color: #087363; text-decoration: underline; text-underline-offset: 3px; }
+}
+.landing-footer-bottom { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 15px; padding-top: 18px; border-top: 1px solid #e1e9e9; color: #647b86; font-size: 12px; }
+
+@media (max-width: 900px) {
+  .landing-hero { grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr); gap: 28px; min-height: 500px; }
+  .landing-hero h1 { font-size: clamp(40px, 6vw, 56px); }
+  .hero-float-note { right: -4px; }
+  .landing-how { gap: 32px; }
+}
+
+@media (max-width: 700px) {
+  .navbar { min-height: 70px; padding-inline: 18px; }
+  .landing-nav { gap: 13px; font-size: 13px; }
+  .landing-nav > a:first-child { display: none; }
+  .landing-hero { grid-template-columns: minmax(0, 1fr); width: min(560px, calc(100% - 36px)); min-height: auto; padding: 54px 0 44px; }
+  .landing-hero-copy { text-align: center; }
+  .landing-hero-copy .eyebrow, .landing-hero-actions { justify-content: center; }
+  .landing-hero h1 { max-width: 540px; margin-inline: auto; font-size: clamp(40px, 10vw, 54px); }
+  .landing-hero-copy > p:not(.landing-login-hint) { margin-inline: auto; font-size: 16px; }
+  .landing-hero-art { min-height: 340px; }
+  .hero-id-card { width: min(370px, 88%); }
+  .hero-float-note { right: 0; bottom: 6px; }
+  .landing-assurance { grid-template-columns: minmax(0, 1fr); width: calc(100% - 36px); padding: 8px 0; }
+  .landing-assurance > div { justify-content: flex-start; min-height: 44px; padding-inline: 10px; }
+  .landing-assurance > div + div { border-top: 1px solid #dce8e7; border-left: 0; }
+  .landing-section { width: calc(100% - 36px); padding: 64px 0; }
+  .landing-section-heading { margin-bottom: 26px; text-align: left; }
+  .portal-card { min-height: 0; }
+  .landing-how { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 60px 18px; }
+  .landing-how-copy { max-width: 560px; }
+  .landing-verify-cta { grid-template-columns: 46px minmax(0, 1fr); width: calc(100% - 36px); gap: 14px; margin: 54px auto; padding: 22px; }
+  .landing-verify-icon { width: 44px; height: 44px; }
+  .landing-verify-cta .landing-primary-action { grid-column: 1 / -1; }
+  .site-footer { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; padding: 34px 18px 18px; }
+  .landing-footer-main { grid-column: 1 / -1; max-width: 500px; }
+  .landing-footer-bottom { flex-direction: column; gap: 5px; }
+}
+
+@media (max-width: 420px) {
+  .landing-nav { gap: 9px; font-size: 12px; }
+  .landing-nav > a:nth-child(2) { display: none; }
+  .landing-hero-actions { align-items: stretch; flex-direction: column; }
+  .landing-hero-actions a { width: 100%; }
+  .landing-hero-art { min-height: 295px; }
+  .hero-id-card { padding: 18px; }
+  .hero-float-note { right: 50%; width: max-content; max-width: calc(100% - 8px); transform: translateX(50%); }
+  .landing-step { grid-template-columns: 28px 38px minmax(0, 1fr); gap: 10px; padding: 15px 12px; }
+  .landing-step-icon { width: 36px; height: 36px; }
+  .site-footer { grid-template-columns: minmax(0, 1fr); }
+  .landing-footer-main, .landing-footer-bottom { grid-column: 1; }
+}
+
+/* Shared control system: consistent forms and actions across public and staff pages. */
+:is(.auth-form, .register-form, .register-section, .register-submit-area,
+    .licence-panel form, .hr-settings-password-form, .hr-reports-filters,
+    .hr-directory-toolbar, .hr-licence-toolbar, .hr-employment-panel)
+:is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea),
+.auth-form > label :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea),
+.input-wrapper input:not([type="checkbox"]):not([type="radio"]),
+.verify-form input:not([type="checkbox"]):not([type="radio"]),
+.hr-reports-input-wrap input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  padding: 0 14px;
+  border: 1px solid #b7c9ce;
+  border-radius: 11px;
+  outline: none;
+  color: #173b4d;
+  background-color: #fff;
+  font: 500 15px/1.4 'Manrope', sans-serif;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.input-wrapper input, .verify-form .input-wrapper input {
+  min-height: 50px;
+  padding-right: 48px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+}
+
+:is(.auth-form, .register-form, .register-section, .register-submit-area,
+    .licence-panel form, .hr-settings-password-form, .hr-reports-filters,
+    .hr-directory-toolbar, .hr-licence-toolbar, .hr-employment-panel)
+:is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea):focus-visible,
+.auth-form > label :is(input:not([type="checkbox"]):not([type="checkbox"]):not([type="file"]), select, textarea):focus-visible,
+.input-wrapper:focus-within, .verify-form .input-wrapper:focus-within,
+.hr-reports-input-wrap:focus-within {
+  border-color: #168575;
+  box-shadow: 0 0 0 3px rgb(22 133 117 / 15%);
+}
+
+:is(.auth-form, .register-form, .register-section, .register-submit-area,
+    .licence-panel form, .hr-settings-password-form)
+label {
+  color: #294b5a;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+:is(.auth-form, .register-form, .register-section, .register-submit-area,
+    .licence-panel form, .hr-settings-password-form)
+label > :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea) {
+  margin-top: 8px;
+}
+
+:is(.auth-form, .register-form, .register-section, .register-submit-area,
+    .licence-panel form, .hr-settings-password-form, .hr-reports-filters,
+    .hr-directory-toolbar, .hr-licence-toolbar, .hr-employment-panel)
+input[type="checkbox"],
+:is(.auth-form, .register-form, .register-section, .hr-settings-card)
+input[type="radio"] {
+  width: 19px;
+  height: 19px;
+  min-height: 19px;
+  padding: 0;
+  accent-color: #087f70;
+  cursor: pointer;
+}
+
+:is(.register-section, .register-submit-area, .licence-panel form)
+input[type="file"] {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 54px;
+  padding: 7px;
+  border: 1px dashed #9db6bd;
+  border-radius: 11px;
+  color: #526a78;
+  background: #f7faf9;
+  font: 500 13px/1.4 'Manrope', sans-serif;
+}
+
+:is(.register-section, .register-submit-area, .licence-panel form)
+input[type="file"]::file-selector-button {
+  min-height: 36px;
+  margin-right: 10px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  color: #155b54;
+  background: #e4f2ee;
+  font: 700 12px 'Manrope', sans-serif;
+  cursor: pointer;
+}
+
+:is(.auth-submit, .register-submit, .verify-submit, .landing-primary-action,
+    .portal-button, .hr-settings-password-form button, .licence-panel form button,
+    .hr-directory-panel button, .hr-licence-panel button, .hr-employment-panel button,
+    .hr-reports-panel button, .admin-panel button) {
+  min-height: 46px;
+  border-radius: 10px;
+  font-weight: 750;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, scale 150ms ease-out, box-shadow 150ms ease;
+}
+
+:is(.auth-submit, .register-submit, .verify-submit, .portal-button):not(:disabled) { cursor: pointer; }
+:is(.auth-submit, .register-submit, .verify-submit, .portal-button, .hr-settings-password-form button,
+    .licence-panel form button, .hr-directory-panel button, .hr-licence-panel button,
+    .hr-employment-panel button, .hr-reports-panel button, .admin-panel button):active { scale: .97; }
+:is(.auth-submit, .register-submit, .verify-submit, .portal-button,
+    .hr-settings-password-form button, .licence-panel form button,
+    .hr-directory-panel button, .hr-licence-panel button, .hr-employment-panel button,
+    .hr-reports-panel button, .admin-panel button):focus-visible {
+  outline: 3px solid rgb(22 133 117 / 26%);
+  outline-offset: 2px;
+}
+
+:is(.auth-form, .register-form, .verify-form, .hr-settings-password-form,
+    .hr-reports-filters, .hr-directory-toolbar) :is(input, select, textarea):disabled,
+:is(.auth-submit, .register-submit, .verify-submit, .portal-button):disabled {
+  cursor: not-allowed;
+  opacity: .62;
+}
+
+:is(.auth-form, .register-form, .verify-form, .hr-settings-password-form,
+    .register-section, .licence-panel form) :is(input, select, textarea)::placeholder {
+  color: #8499a1;
+  opacity: 1;
+}
+
+.form-group small, .field-hint, .register-section .field-hint {
+  color: #607985;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (hover: hover) {
+  :is(.auth-submit, .register-submit, .verify-submit, .portal-button,
+      .hr-settings-password-form button, .licence-panel form button,
+      .hr-directory-panel button, .hr-licence-panel button, .hr-employment-panel button,
+      .hr-reports-panel button, .admin-panel button):not(:disabled):hover {
+    box-shadow: 0 5px 14px rgb(23 65 77 / 12%);
+  }
+  :is(.register-section, .register-submit-area, .licence-panel form) input[type="file"]:hover {
+    border-color: #168575;
+    background-color: #f0f7f5;
+  }
+}
+
+@media (max-width: 700px) {
+  :is(.auth-form, .register-form, .register-section, .register-submit-area,
+      .licence-panel form, .hr-settings-password-form, .hr-reports-filters,
+      .hr-directory-toolbar, .hr-licence-toolbar, .hr-employment-panel)
+  :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea),
+  .auth-form > label :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea) {
+    min-height: 48px;
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.auth-submit, .register-submit, .verify-submit, .portal-button,
+      .auth-form input, .auth-form select, .register-form input, .register-form select,
+      .register-section input, .register-section select, .verify-form input) {
+    transition-duration: 0.01ms;
+  }
+}

@@ -1,0 +1,25 @@
+/* Global Styles */
+body {
+    font-family: 'SF Pro Text', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    line-height: 1.07;
+}
+
+h1 {
+    font-size: 56px;
+    letter-spacing: -0.28px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+}

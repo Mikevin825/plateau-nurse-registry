@@ -103,6 +103,7 @@ function NurseLayout() {
         <div className="nurse-sidebar-bottom">
           <Link
             to="/nurse/login"
+            onClick={() => localStorage.removeItem("token")}
             className="nurse-nav-link nurse-logout-link"
           >
             <LogOut size={19} />

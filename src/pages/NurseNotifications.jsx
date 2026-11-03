@@ -1,230 +1,40 @@
-import { useState } from 'react'
-import {
-  Bell,
-  CheckCheck,
-  ClipboardCheck,
-  Clock,
-  FileCheck,
-  ShieldCheck,
-  Building2,
-  Info,
-  Mail,
-} from 'lucide-react'
-
-import './NurseNotifications.css'
-
-const initialNotifications = [
-  {
-    id: 1,
-    type: 'registration',
-    title: 'Registration submitted successfully',
-    message:
-      'Your registration details have been received. An authorised registry officer will review your application.',
-    date: 'Just now',
-    unread: true,
-  },
-  {
-    id: 2,
-    type: 'verification',
-    title: 'Licence verification pending',
-    message:
-      'Your NMCN licence is awaiting manual verification against the relevant records.',
-    date: 'Today',
-    unread: true,
-  },
-  {
-    id: 3,
-    type: 'employment',
-    title: 'Employment confirmation required',
-    message:
-      'Your declared employer will need to confirm your current employment details.',
-    date: 'Yesterday',
-    unread: false,
-  },
-]
-
-function getNotificationIcon(type) {
-  switch (type) {
-    case 'registration':
-      return <ClipboardCheck size={19} />
-
-    case 'verification':
-      return <ShieldCheck size={19} />
-
-    case 'licence':
-      return <FileCheck size={19} />
-
-    case 'employment':
-      return <Building2 size={19} />
-
-    default:
-      return <Info size={19} />
-  }
-}
+import { useEffect, useState } from "react";
+import { Bell, Clock, FileCheck, Info, Mail, ShieldCheck } from "lucide-react";
+import "./NurseNotifications.css";
+import { getNurseActivity } from "../apiService";
 
 function NurseNotifications() {
-  const [notifications, setNotifications] = useState(initialNotifications)
-  const [activeFilter, setActiveFilter] = useState('all')
+  const [items, setItems] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
 
-  const unreadCount = notifications.filter(
-    (notification) => notification.unread,
-  ).length
+  useEffect(() => {
+    let active = true;
+    getNurseActivity(token).then((activity) => {
+      const reminders = activity.notifications.map((item) => ({
+        id: `notification-${item.id}`, type: "reminder", title: "Licence expiry reminder",
+        message: `Your licence expiry date is ${new Date(item.licence_expiry).toLocaleDateString()}. Reminder status: ${item.status}.`,
+        date: item.sent_at ? new Date(item.sent_at).toLocaleDateString() : "Pending dispatch",
+      }));
+      const docs = activity.documents.map((item) => ({
+        id: `document-${item.id}`, type: "licence", title: `${item.document_type === "renewal" ? "Renewal" : "Initial licence"} document ${item.decision}`,
+        message: item.reason || "Your document review status is shown above.",
+        date: new Date(item.uploaded_at).toLocaleDateString(),
+      }));
+      if (active) setItems([...reminders, ...docs]);
+    }).catch((err) => { if (active) setError(err.message); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [token]);
 
-  const filteredNotifications = notifications.filter((notification) => {
-    if (activeFilter === 'unread') {
-      return notification.unread
-    }
-
-    return true
-  })
-
-  function markAsRead(id) {
-    setNotifications((current) =>
-      current.map((notification) =>
-        notification.id === id
-          ? { ...notification, unread: false }
-          : notification,
-      ),
-    )
-  }
-
-  function markAllAsRead() {
-    setNotifications((current) =>
-      current.map((notification) => ({
-        ...notification,
-        unread: false,
-      })),
-    )
-  }
-
-  return (
-    <div className="nurse-notifications-page">
-      <main className="notifications-container">
-        <div className="notifications-heading">
-          <div>
-            <span className="notifications-eyebrow">NURSE PORTAL</span>
-            <h1>Notifications</h1>
-            <p>
-              Stay informed about your registration, licence and
-              registry activities.
-            </p>
-          </div>
-
-          <div className="notifications-count">
-            <Bell size={19} />
-            <span>{unreadCount} unread</span>
-          </div>
-        </div>
-
-        <section className="notifications-summary">
-          <div className="notifications-summary-icon">
-            <Mail size={22} />
-          </div>
-
-          <div>
-            <strong>You are up to date with your registry activity</strong>
-            <p>
-              Important updates about your registration and licence
-              status will appear here.
-            </p>
-          </div>
-        </section>
-
-        <section className="notifications-panel">
-          <div className="notifications-toolbar">
-            <div>
-              <h2>All notifications</h2>
-              <span>{notifications.length} total updates</span>
-            </div>
-
-            <button
-              className="mark-all-read"
-              onClick={markAllAsRead}
-              disabled={unreadCount === 0}
-            >
-              <CheckCheck size={16} />
-              Mark all as read
-            </button>
-          </div>
-
-          <div className="notifications-filters">
-            <button
-              className={activeFilter === 'all' ? 'active' : ''}
-              onClick={() => setActiveFilter('all')}
-            >
-              All
-            </button>
-
-            <button
-              className={activeFilter === 'unread' ? 'active' : ''}
-              onClick={() => setActiveFilter('unread')}
-            >
-              Unread
-              {unreadCount > 0 && <span>{unreadCount}</span>}
-            </button>
-          </div>
-
-          <div className="notifications-list">
-            {filteredNotifications.length > 0 ? (
-              filteredNotifications.map((notification) => (
-                <article
-                  key={notification.id}
-                  className={`notification-item ${
-                    notification.unread ? 'unread' : ''
-                  }`}
-                >
-                  <div className={`notification-icon ${notification.type}`}>
-                    {getNotificationIcon(notification.type)}
-                  </div>
-
-                  <div className="notification-content">
-                    <div className="notification-title-row">
-                      <h3>{notification.title}</h3>
-
-                      {notification.unread && (
-                        <span className="notification-unread-dot" />
-                      )}
-                    </div>
-
-                    <p>{notification.message}</p>
-
-                    <div className="notification-meta">
-                      <span>
-                        <Clock size={13} />
-                        {notification.date}
-                      </span>
-
-                      {notification.unread && (
-                        <button
-                          onClick={() => markAsRead(notification.id)}
-                        >
-                          Mark as read
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              ))
-            ) : (
-              <div className="notifications-empty">
-                <div>
-                  <CheckCheck size={27} />
-                </div>
-                <h3>No unread notifications</h3>
-                <p>You've read all your current registry updates.</p>
-              </div>
-            )}
-          </div>
-        </section>
-
-        <p className="notifications-footer-note">
-          These notifications are displayed for demonstration.
-          Official registry updates and email alerts will be connected
-          to the platform backend.
-        </p>
-      </main>
-    </div>
-  )
+  return <div className="nurse-notifications-page"><main className="notifications-container">
+    <div className="notifications-heading"><div><span className="notifications-eyebrow">NURSE PORTAL</span><h1>Notifications</h1><p>Registry reminders and document review updates for your account.</p></div><div className="notifications-count"><Bell size={19} /><span>{items.length} updates</span></div></div>
+    <section className="notifications-summary"><div className="notifications-summary-icon"><Mail size={22} /></div><div><strong>Registry activity</strong><p>Updates are loaded from your licence documents and recorded expiry reminders.</p></div></section>
+    <section className="notifications-panel"><div className="notifications-toolbar"><div><h2>Recent updates</h2><span>{items.length} total</span></div></div>
+      <div className="notifications-list">{loading ? <p>Loading updates…</p> : error ? <p role="alert">{error}</p> : items.length ? items.map((item) => <article className="notification-item" key={item.id}><div className={`notification-icon ${item.type}`}>{item.type === "reminder" ? <Clock size={19} /> : item.type === "licence" ? <FileCheck size={19} /> : <ShieldCheck size={19} />}</div><div className="notification-content"><div className="notification-title-row"><h3>{item.title}</h3></div><p>{item.message}</p><div className="notification-meta"><span><Clock size={13} />{item.date}</span></div></div></article>) : <div className="notifications-empty"><div><Info size={27} /></div><h3>No registry updates</h3><p>New reminders and document decisions will appear here when recorded.</p></div>}</div>
+    </section>
+  </main></div>;
 }
 
-export default NurseNotifications
+export default NurseNotifications;

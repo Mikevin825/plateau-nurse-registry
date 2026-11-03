@@ -322,8 +322,11 @@
   color: #244b76;
 }
 
+@media (hover: hover) {
+
 .hr-employment-view-button:hover {
   background: #e1edf9;
+}
 }
 
 .hr-employment-confirm-button {
@@ -332,8 +335,11 @@
   color: #126b55;
 }
 
+@media (hover: hover) {
+
 .hr-employment-confirm-button:hover {
   background: #d8eee5;
+}
 }
 
 .hr-employment-empty {

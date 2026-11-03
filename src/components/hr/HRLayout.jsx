@@ -114,6 +114,7 @@ function HRLayout() {
         <div className="hr-sidebar-bottom">
           <Link
             to="/hospital/login"
+            onClick={() => localStorage.removeItem("token")}
             className="hr-nav-link hr-logout-link"
           >
             <LogOut size={19} />

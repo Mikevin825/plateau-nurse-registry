@@ -1,38 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  --navy: #142D4E;
-  --navy-light: #1E416A;
-  --green: #167D68;
-  --green-light: #E8F3EF;
+  --sk-page-bg: #f5f5f7;
+  --sk-page-bg-dark: #000000;
+  --sk-surface: #ffffff;
+  --sk-surface-alt: #f5f5f7;
+  --sk-surface-elevated: #ffffff;
+  --sk-text: #1d1d1f;
+  --sk-text-secondary: rgba(0, 0, 0, 0.72);
+  --sk-text-muted: rgba(0, 0, 0, 0.48);
+  --sk-text-inverse: #ffffff;
+  --sk-border: rgba(0, 0, 0, 0.08);
+  --sk-focus-color: #0071e3;
+  --sk-link-color: #0066cc;
+  --sk-link-color-dark: #2997ff;
+  --sk-button-active: #ededf2;
+  --sk-card-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  --sk-button-radius: 8px;
+  --sk-pill-radius: 999px;
 
-  --background: #F4F7FA;
-  --surface: #FFFFFF;
+  --navy: #1d1d1f;
+  --navy-light: #2d2d31;
+  --green: #0071e3;
+  --green-light: rgba(0, 113, 227, 0.12);
 
-  --text-primary: #172B42;
-  --text-secondary: #718096;
+  --background: var(--sk-page-bg);
+  --surface: var(--sk-surface);
+  --text-primary: var(--sk-text);
+  --text-secondary: var(--sk-text-secondary);
+  --border: var(--sk-border);
 
-  --border: #E3EAF0;
+  --font-heading-xl: clamp(2.5rem, 5vw, 3.5rem);
+  --font-heading-lg: clamp(1.75rem, 2.75vw, 2.5rem);
+  --font-heading-md: 1.3125rem;
+  --font-body: 1.0625rem;
+  --font-label: 0.96rem;
+  --font-input: 1rem;
+  --font-button: 1.0625rem;
+  --font-secondary: 0.875rem;
 
-  /* Accessibility-focused typography scale */
-  --font-heading-xl: 32px;        /* Main page headings: 30-34px */
-  --font-heading-lg: 22px;        /* Section headings: 20-24px */
-  --font-heading-md: 20px;
-  --font-dashboard-figure: 30px;  /* Dashboard figures: 28-32px */
-  --font-body: 16px;             /* Body text */
-  --font-table-content: 15px;    /* Table content: 15-16px */
-  --font-table-heading: 14px;    /* Table headings: 14-15px */
-  --font-label: 15px;            /* Form labels: 15-16px */
-  --font-input: 16px;            /* Input text */
-  --font-button: 15px;           /* Buttons: 15-16px */
-  --font-secondary: 14px;        /* Secondary info: min 14px */
-
-  /* Touch targets */
   --touch-target-min: 44px;
-
-  /* Table horizontal scroll wrapper */
   --table-cell-padding: 12px 16px;
 
   font-synthesis: none;
@@ -50,29 +59,30 @@
   box-sizing: border-box;
 }
 
-body {
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  font-size: 16px;
-  line-height: 1.6;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text-primary);
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
 }
 
 p {
-  line-height: 1.65;
+  line-height: 1.47;
 }
 
 input,
 select,
 textarea,
 button {
+  font: inherit;
   font-size: 16px;
 }
 
@@ -84,18 +94,27 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
-button,
-input {
-  font: inherit;
-}
-
 button {
   cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--sk-focus-color);
+  outline-offset: 2px;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 #root {
