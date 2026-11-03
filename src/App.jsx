@@ -11,6 +11,7 @@ import LicenceManagement from "./pages/LicenceManagement";
 import DigitalIDCard from "./pages/DigitalIDCard";
 import { Link } from "react-router-dom";
 import NurseNotifications from "./pages/NurseNotifications";
+import NurseLayout from "./components/nurse/NurseLayout";
 
 function WelcomePage() {
   return (
@@ -153,14 +154,19 @@ function App() {
     <Routes>
       <Route path="/" element={<WelcomePage />} />
 
-      {/* Nurse Portal */}
+      {/* Nurse authentication */}
       <Route path="/nurse/login" element={<NurseLogin />} />
       <Route path="/nurse/register" element={<NurseRegister />} />
-      <Route path="/nurse/dashboard" element={<NurseDashboard />} />
-      <Route path="/nurse/profile" element={<NurseProfile />} />
-      <Route path="/nurse/licence" element={<LicenceManagement />} />
-      <Route path="/nurse/id-card" element={<DigitalIDCard />} />
-      <Route path="/nurse/notifications" element={<NurseNotifications />} />
+
+      {/* Nurse Portal */}
+      <Route path="/nurse" element={<NurseLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<NurseDashboard />} />
+        <Route path="profile" element={<NurseProfile />} />
+        <Route path="licence" element={<LicenceManagement />} />
+        <Route path="id-card" element={<DigitalIDCard />} />
+        <Route path="notifications" element={<NurseNotifications />} />
+      </Route>
 
       {/* Hospital Portal */}
       <Route path="/hospital/login" element={<HospitalLogin />} />
