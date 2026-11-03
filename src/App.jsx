@@ -25,6 +25,7 @@ import AdminNurseRegistry from "./pages/admin/AdminNurseRegistry";
 import AdminNurseProfile from "./pages/admin/AdminNurseProfile";
 import AdminPendingApprovals from "./pages/admin/AdminPendingApprovals";
 import AdminFlaggedRecords from "./pages/admin/AdminFlaggedRecords";
+import AdminLicenceRenewals from "./pages/admin/AdminLicenceRenewals";
 
 function WelcomePage() {
   return (
@@ -204,6 +205,7 @@ function App() {
         <Route path="nurses/:nurseId" element={<AdminNurseProfile />} />
         <Route path="approvals" element={<AdminPendingApprovals />} />
         <Route path="flagged" element={<AdminFlaggedRecords />} />
+        <Route path="renewals" element={<AdminLicenceRenewals />} />
       </Route>
 
       {/* Public Verification */}
