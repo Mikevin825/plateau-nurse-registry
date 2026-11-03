@@ -21,6 +21,7 @@ import HRReports from "./pages/hr/HRReports";
 import HRSettings from "./pages/hr/HRSettings";
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminNurseRegistry from "./pages/admin/AdminNurseRegistry";
 
 function WelcomePage() {
   return (
@@ -196,6 +197,7 @@ function App() {
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="nurses" element={<AdminNurseRegistry />} />
       </Route>
 
       {/* Public Verification */}

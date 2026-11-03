@@ -1,0 +1,477 @@
+.admin-registry {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.registry-page-heading h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: 'Manrope', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.registry-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.registry-page-heading p {
+  margin: 9px 0 0;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Summary cards */
+
+.registry-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.registry-summary-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+}
+
+.registry-summary-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+}
+
+.registry-summary-icon.blue {
+  color: #2865A5;
+  background: #EAF2FC;
+}
+
+.registry-summary-icon.green {
+  color: #167D68;
+  background: #E8F3EF;
+}
+
+.registry-summary-icon.orange {
+  color: #A65B14;
+  background: #FFF2E4;
+}
+
+.registry-summary-icon.red {
+  color: #B44747;
+  background: #FCECEC;
+}
+
+.registry-summary-card > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.registry-summary-card span {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.registry-summary-card strong {
+  color: var(--text-primary);
+  font-family: 'Manrope', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.registry-summary-card small {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Register panel */
+
+.registry-panel {
+  min-width: 0;
+  padding: 23px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  box-shadow: 0 2px 8px rgba(20, 45, 78, 0.035);
+}
+
+.registry-panel-heading {
+  margin-bottom: 20px;
+}
+
+.registry-panel-heading h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: 'Manrope', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.registry-panel-heading p {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Search and filters */
+
+.registry-filters {
+  display: grid;
+  grid-template-columns: minmax(230px, 1.5fr) repeat(4, minmax(135px, 1fr)) auto;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.registry-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  height: 48px;
+  padding: 0 13px;
+  color: var(--text-secondary);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.registry-search:focus-within {
+  border-color: var(--green);
+  outline: 2px solid rgba(22, 125, 104, 0.12);
+}
+
+.registry-search input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.registry-search input::placeholder {
+  color: #8995A3;
+}
+
+.registry-filter-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.registry-filter-control span {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.registry-filter-control select {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 10px;
+  color: var(--text-primary);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.registry-filter-control select:focus {
+  border-color: var(--green);
+  outline: 2px solid rgba(22, 125, 104, 0.12);
+}
+
+.registry-reset-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 48px;
+  padding: 0 13px;
+  color: var(--navy);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.registry-reset-button:hover {
+  background: #F4F7FA;
+  border-color: var(--navy-light);
+}
+
+/* Register table */
+
+.registry-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.registry-table {
+  width: 100%;
+  min-width: 1120px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.registry-table th {
+  padding: 14px 12px;
+  color: var(--text-secondary);
+  background: #F7F9FB;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.registry-table td {
+  padding: 15px 12px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.registry-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.registry-nurse-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 175px;
+}
+
+.registry-nurse-name strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.registry-avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  color: var(--navy);
+  background: #EAF0F7;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.registry-id {
+  font-weight: 600;
+  color: var(--navy) !important;
+}
+
+/* Status labels */
+
+.registry-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.registry-status.approved {
+  color: #176B55;
+  background: #E5F4ED;
+}
+
+.registry-status.pending {
+  color: #8A5416;
+  background: #FFF2DF;
+}
+
+.registry-status.flagged {
+  color: #8A4E16;
+  background: #FFF0DF;
+}
+
+.registry-status.suspended {
+  color: #8A3C3C;
+  background: #FCEAEA;
+}
+
+.registry-status.revoked {
+  color: #FFFFFF;
+  background: #773D3D;
+}
+
+.registry-view-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 8px 11px;
+  color: var(--navy);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.registry-view-button:hover {
+  background: #F4F7FA;
+  border-color: var(--navy-light);
+}
+
+/* Empty search results */
+
+.registry-empty {
+  padding: 45px 20px !important;
+  text-align: center;
+  white-space: normal !important;
+}
+
+.registry-empty > * {
+  display: block;
+  margin: 8px auto;
+}
+
+.registry-empty svg {
+  color: var(--text-secondary);
+}
+
+.registry-empty strong {
+  color: var(--text-primary);
+  font-size: 17px;
+}
+
+.registry-empty span {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.registry-empty button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 13px;
+  color: var(--navy);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Demo notice */
+
+.registry-demo-notice {
+  margin: 0;
+  padding: 14px 16px;
+  color: #586779;
+  background: #EDF2F7;
+  border-radius: 9px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsive layout */
+
+@media (max-width: 1250px) {
+  .registry-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .registry-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .registry-search {
+    grid-column: 1 / -1;
+  }
+
+  .registry-reset-button {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-registry {
+    gap: 17px;
+  }
+
+  .registry-page-heading h1 {
+    font-size: 30px;
+  }
+
+  .registry-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registry-summary-card {
+    padding: 17px;
+  }
+
+  .registry-panel {
+    padding: 16px;
+  }
+
+  .registry-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .registry-search {
+    grid-column: auto;
+  }
+
+  .registry-reset-button {
+    width: 100%;
+  }
+}
