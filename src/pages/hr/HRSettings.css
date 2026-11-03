@@ -1,0 +1,316 @@
+
+.hr-settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  color: var(--text-primary, #172B42);
+}
+
+.hr-settings-header {
+  margin-bottom: 2px;
+}
+
+.hr-settings-eyebrow {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--green, #167D68);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.hr-settings-header h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.hr-settings-header p {
+  margin: 10px 0 0;
+  color: var(--text-secondary, #718096);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hr-settings-card {
+  padding: 25px;
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border, #E3EAF0);
+  border-radius: 13px;
+}
+
+.hr-settings-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 21px;
+  border-bottom: 1px solid var(--border, #E3EAF0);
+}
+
+.hr-settings-heading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  color: var(--green, #167D68);
+  background: var(--green-light, #E8F3EF);
+  border-radius: 11px;
+}
+
+.hr-settings-card-heading h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.hr-settings-card-heading p {
+  margin: 6px 0 0;
+  color: var(--text-secondary, #718096);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.hr-settings-information-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px 30px;
+  padding: 25px 0;
+}
+
+.hr-settings-information-item {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.hr-settings-information-item.full {
+  grid-column: 1 / -1;
+}
+
+.hr-settings-information-item > span {
+  color: var(--text-secondary, #718096);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hr-settings-information-item > strong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary, #172B42);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.hr-settings-information-item > strong svg {
+  flex: 0 0 auto;
+  color: var(--green, #167D68);
+}
+
+.hr-settings-readonly,
+.hr-settings-security-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 15px 16px;
+  color: #315B78;
+  background: #EDF5FA;
+  border: 1px solid #D8E8F2;
+  border-radius: 9px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.hr-settings-readonly svg,
+.hr-settings-security-note svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.hr-settings-preferences {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+}
+
+.hr-settings-preference {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border, #E3EAF0);
+  cursor: pointer;
+}
+
+.hr-settings-preference:last-child {
+  border-bottom: none;
+}
+
+.hr-settings-preference > div {
+  min-width: 0;
+}
+
+.hr-settings-preference strong {
+  display: block;
+  color: var(--text-primary, #172B42);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.hr-settings-preference p {
+  margin: 7px 0 0;
+  color: var(--text-secondary, #718096);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.hr-settings-preference input {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  accent-color: var(--green, #167D68);
+  cursor: pointer;
+}
+
+.hr-settings-password-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 21px;
+  padding: 25px 0;
+}
+
+.hr-settings-password-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.hr-settings-password-form label span {
+  color: var(--text-primary, #172B42);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.hr-settings-password-form input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  color: var(--text-primary, #172B42);
+  background: #fff;
+  border: 1px solid var(--border, #E3EAF0);
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.hr-settings-password-form input:focus {
+  border-color: var(--green, #167D68);
+  outline: 2px solid rgba(22, 125, 104, 0.12);
+}
+
+.hr-settings-password-form input::placeholder {
+  color: #8996A5;
+}
+
+.hr-settings-password-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 0 20px;
+  color: #fff;
+  background: var(--navy, #142D4E);
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.hr-settings-password-form button:hover {
+  background: var(--navy-light, #1E416A);
+}
+
+.hr-settings-security-note {
+  color: #426B51;
+  background: #EFF7F0;
+  border-color: #D9EADB;
+}
+
+.hr-settings-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 15px 17px;
+  color: #315B78;
+  background: #EDF5FA;
+  border: 1px solid #D8E8F2;
+  border-radius: 9px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.hr-settings-notice svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+@media (max-width: 760px) {
+  .hr-settings-page {
+    gap: 19px;
+  }
+
+  .hr-settings-header h1 {
+    font-size: 30px;
+  }
+
+  .hr-settings-card {
+    padding: 19px;
+  }
+
+  .hr-settings-information-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hr-settings-information-item.full {
+    grid-column: auto;
+  }
+
+  .hr-settings-password-form {
+    grid-template-columns: 1fr;
+  }
+
+  .hr-settings-preference {
+    align-items: flex-start;
+  }
+
+  .hr-settings-preference input {
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hr-settings-card-heading {
+    align-items: flex-start;
+  }
+
+  .hr-settings-heading-icon {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+}

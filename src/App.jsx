@@ -14,10 +14,11 @@ import NurseNotifications from "./pages/NurseNotifications";
 import NurseLayout from "./components/nurse/NurseLayout";
 import HRLayout from "./components/hr/HRLayout";
 import HRDashboard from "./pages/hr/HRDashboard";
-import HRSectionPlaceholder from "./pages/hr/HRSectionPlaceholder";
 import HRNurseDirectory from "./pages/hr/HRNurseDirectory";
 import HRLicenceMonitoring from "./pages/hr/HRLicenceMonitoring";
 import HREmploymentVerification from "./pages/hr/HREmploymentVerification";
+import HRReports from "./pages/hr/HRReports";
+import HRSettings from "./pages/hr/HRSettings";
 
 function WelcomePage() {
   return (
@@ -185,8 +186,8 @@ function App() {
         <Route path="nurses" element={<HRNurseDirectory />} />
         <Route path="licences" element={<HRLicenceMonitoring />} />
         <Route path="employment" element={<HREmploymentVerification />} />
-        <Route path="reports" element={<HRSectionPlaceholder />} />
-        <Route path="settings" element={<HRSectionPlaceholder />} />
+        <Route path="reports" element={<HRReports />} />
+        <Route path="settings" element={<HRSettings />} />
       </Route>
 
       {/* Public Verification */}
