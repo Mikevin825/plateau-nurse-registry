@@ -16,6 +16,8 @@ import HRLayout from "./components/hr/HRLayout";
 import HRDashboard from "./pages/hr/HRDashboard";
 import HRSectionPlaceholder from "./pages/hr/HRSectionPlaceholder";
 import HRNurseDirectory from "./pages/hr/HRNurseDirectory";
+import HRLicenceMonitoring from "./pages/hr/HRLicenceMonitoring";
+import HREmploymentVerification from "./pages/hr/HREmploymentVerification";
 
 function WelcomePage() {
   return (
@@ -181,8 +183,8 @@ function App() {
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<HRDashboard />} />
         <Route path="nurses" element={<HRNurseDirectory />} />
-        <Route path="licences" element={<HRSectionPlaceholder />} />
-        <Route path="employment" element={<HRSectionPlaceholder />} />
+        <Route path="licences" element={<HRLicenceMonitoring />} />
+        <Route path="employment" element={<HREmploymentVerification />} />
         <Route path="reports" element={<HRSectionPlaceholder />} />
         <Route path="settings" element={<HRSectionPlaceholder />} />
       </Route>
