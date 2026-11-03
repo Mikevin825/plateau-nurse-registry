@@ -1,6 +1,4 @@
 import {
-  ArrowLeft,
-  ShieldCheck,
   FileCheck,
   CalendarDays,
   Upload,
@@ -11,24 +9,11 @@ import {
   LockKeyhole,
 } from 'lucide-react'
 
-import { Link } from 'react-router-dom'
 import './LicenceManagement.css'
 
 function LicenceManagement() {
   return (
     <div className="licence-page">
-      <header className="licence-topbar">
-        <Link to="/nurse/dashboard" className="licence-back">
-          <ArrowLeft size={18} />
-          <span>Back to Dashboard</span>
-        </Link>
-
-        <div className="licence-brand">
-          <ShieldCheck size={21} />
-          <span>Nurse Registry</span>
-        </div>
-      </header>
-
       <main className="licence-content">
         <div className="licence-heading">
           <div>

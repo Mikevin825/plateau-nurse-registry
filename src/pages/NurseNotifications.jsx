@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import {
-  ArrowLeft,
   Bell,
   CheckCheck,
   ClipboardCheck,
@@ -12,7 +11,6 @@ import {
   Mail,
 } from 'lucide-react'
 
-import { Link } from 'react-router-dom'
 import './NurseNotifications.css'
 
 const initialNotifications = [
@@ -101,18 +99,6 @@ function NurseNotifications() {
 
   return (
     <div className="nurse-notifications-page">
-      <header className="notifications-header">
-        <Link to="/nurse/dashboard" className="notifications-back">
-          <ArrowLeft size={18} />
-          <span>Back to Dashboard</span>
-        </Link>
-
-        <div className="notifications-brand">
-          <ShieldCheck size={20} />
-          <span>Nurse Registry</span>
-        </div>
-      </header>
-
       <main className="notifications-container">
         <div className="notifications-heading">
           <div>

@@ -1,5 +1,4 @@
 import {
-  ArrowLeft,
   ShieldCheck,
   LockKeyhole,
   QrCode,
@@ -9,7 +8,6 @@ import {
   BriefcaseMedical,
 } from 'lucide-react'
 
-import { Link } from 'react-router-dom'
 import './DigitalIDCard.css'
 
 function DigitalIDCard() {
@@ -24,18 +22,6 @@ function DigitalIDCard() {
 
   return (
     <div className="digital-id-page">
-      <header className="digital-id-header">
-        <Link to="/nurse/dashboard" className="digital-id-back">
-          <ArrowLeft size={18} />
-          <span>Back to Dashboard</span>
-        </Link>
-
-        <div className="digital-id-header-label">
-          <ShieldCheck size={20} />
-          <span>Nurse Registry</span>
-        </div>
-      </header>
-
       <main className="digital-id-container">
         <div className="digital-id-heading">
           <div>
