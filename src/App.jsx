@@ -19,6 +19,8 @@ import HRLicenceMonitoring from "./pages/hr/HRLicenceMonitoring";
 import HREmploymentVerification from "./pages/hr/HREmploymentVerification";
 import HRReports from "./pages/hr/HRReports";
 import HRSettings from "./pages/hr/HRSettings";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 function WelcomePage() {
   return (
@@ -188,6 +190,12 @@ function App() {
         <Route path="employment" element={<HREmploymentVerification />} />
         <Route path="reports" element={<HRReports />} />
         <Route path="settings" element={<HRSettings />} />
+      </Route>
+
+      {/* Super Admin Portal */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboard />} />
       </Route>
 
       {/* Public Verification */}
