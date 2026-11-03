@@ -1,0 +1,524 @@
+
+.admin-renewal-review-page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 28px 32px 48px;
+  color: #172033;
+}
+
+.admin-renewal-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  margin-bottom: 24px;
+  color: #315fba;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-renewal-back-link:hover {
+  color: #234b99;
+}
+
+.admin-renewal-review-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.admin-renewal-review-eyebrow {
+  display: block;
+  margin-bottom: 9px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.admin-renewal-review-heading h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 34px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.admin-renewal-review-heading p {
+  margin: 10px 0 0;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.admin-renewal-review-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 105px;
+  min-height: 38px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.admin-renewal-review-status.pending {
+  background: #fff3df;
+  color: #986017;
+}
+
+.admin-renewal-review-status.approved {
+  background: #e8f7ee;
+  color: #237b49;
+}
+
+.admin-renewal-review-status.rejected {
+  background: #ffeded;
+  color: #b73535;
+}
+
+.admin-renewal-review-demo-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  border: 1px solid #f1d9a8;
+  border-radius: 10px;
+  background: #fffaf0;
+  color: #76551b;
+}
+
+.admin-renewal-review-demo-notice > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.admin-renewal-review-demo-notice p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.admin-renewal-review-card {
+  margin-bottom: 22px;
+  padding: 24px;
+  border: 1px solid #e8edf4;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+}
+
+.admin-renewal-review-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 22px;
+  color: #315fba;
+}
+
+.admin-renewal-review-card-heading h2 {
+  margin: 0;
+  color: #172033;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.admin-renewal-review-nurse {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.admin-renewal-review-avatar {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #eaf1ff;
+  color: #315fba;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.admin-renewal-review-nurse h3 {
+  margin: 0 0 6px;
+  color: #172033;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.admin-renewal-review-nurse span {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.admin-renewal-review-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 30px;
+}
+
+.admin-renewal-review-details-grid > div {
+  min-width: 0;
+}
+
+.admin-renewal-review-details-grid span {
+  display: block;
+  margin-bottom: 7px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.admin-renewal-review-details-grid strong {
+  display: block;
+  color: #172033;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.admin-renewal-section-description {
+  margin: -8px 0 20px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.admin-renewal-document-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-renewal-document {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 84px;
+  padding: 15px;
+  border: 1px solid #e8edf4;
+  border-radius: 10px;
+  background: #fbfcfe;
+}
+
+.admin-renewal-document-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 10px;
+  background: #eaf1ff;
+  color: #315fba;
+}
+
+.admin-renewal-document-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.admin-renewal-document-info strong {
+  color: #172033;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.admin-renewal-document-info span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.admin-renewal-document-info small {
+  color: #94a3b8;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.admin-renewal-document-placeholder {
+  flex-shrink: 0;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-renewal-history {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-renewal-history-item {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  min-height: 88px;
+}
+
+.admin-renewal-history-item:not(:last-child)::before {
+  position: absolute;
+  top: 15px;
+  bottom: -3px;
+  left: 6px;
+  width: 2px;
+  background: #e2e8f0;
+  content: "";
+}
+
+.admin-renewal-history-marker {
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  border: 3px solid #dce8fb;
+  border-radius: 50%;
+  background: #416fc4;
+}
+
+.admin-renewal-history-item > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-bottom: 20px;
+}
+
+.admin-renewal-history-item strong {
+  color: #172033;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.admin-renewal-history-item span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.admin-renewal-history-item small {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.admin-renewal-decision-card {
+  border-color: #dce6f5;
+}
+
+.admin-renewal-reason-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 9px;
+  color: #334155;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.admin-renewal-reason-label span {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.admin-renewal-decision-card textarea {
+  display: block;
+  width: 100%;
+  min-height: 110px;
+  padding: 13px 14px;
+  border: 1px solid #dce3ed;
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: #172033;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.admin-renewal-decision-card textarea:focus {
+  border-color: #416fc4;
+  box-shadow: 0 0 0 3px rgba(65, 111, 196, 0.1);
+}
+
+.admin-renewal-decision-card textarea::placeholder {
+  color: #94a3b8;
+}
+
+.admin-renewal-feedback {
+  margin: 12px 0 0;
+  color: #b73535;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.admin-renewal-decision-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.admin-renewal-decision-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 170px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.admin-renewal-approve-button {
+  background: #197849;
+  color: #fff;
+}
+
+.admin-renewal-approve-button:hover {
+  background: #12613a;
+}
+
+.admin-renewal-reject-button {
+  background: #b93838;
+  color: #fff;
+}
+
+.admin-renewal-reject-button:hover {
+  background: #982c2c;
+}
+
+.admin-renewal-decision-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 17px;
+  border: 1px solid #dce8f4;
+  border-radius: 10px;
+  background: #f6f9fe;
+  color: #315fba;
+}
+
+.admin-renewal-decision-result > svg {
+  flex-shrink: 0;
+}
+
+.admin-renewal-decision-result strong {
+  display: block;
+  color: #172033;
+  font-size: 16px;
+}
+
+.admin-renewal-decision-result p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.admin-renewal-not-found {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 70px 20px;
+  border: 1px solid #e8edf4;
+  border-radius: 14px;
+  background: #fff;
+  color: #64748b;
+  text-align: center;
+}
+
+.admin-renewal-not-found h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 25px;
+}
+
+.admin-renewal-not-found p {
+  max-width: 480px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.admin-renewal-not-found a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #315fba;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-renewal-review-page button:focus-visible,
+.admin-renewal-review-page a:focus-visible,
+.admin-renewal-review-page textarea:focus-visible {
+  outline: 3px solid rgba(49, 95, 186, 0.3);
+  outline-offset: 3px;
+}
+
+@media (max-width: 750px) {
+  .admin-renewal-review-page {
+    padding: 22px 16px 36px;
+  }
+
+  .admin-renewal-review-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-renewal-review-heading h1 {
+    font-size: 29px;
+  }
+
+  .admin-renewal-review-card {
+    padding: 19px 16px;
+  }
+
+  .admin-renewal-review-details-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .admin-renewal-document {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .admin-renewal-document-placeholder {
+    margin-left: 58px;
+  }
+
+  .admin-renewal-decision-actions {
+    flex-direction: column;
+  }
+
+  .admin-renewal-decision-actions button {
+    width: 100%;
+  }
+}

@@ -293,7 +293,7 @@ function AdminLicenceRenewals() {
                         className="admin-renewals-review-button"
                         onClick={() =>
                           navigate(
-                            `/admin/nurses/${encodeURIComponent(record.id)}`
+                            `/admin/renewals/${encodeURIComponent(record.id)}`
                           )
                         }
                       >
