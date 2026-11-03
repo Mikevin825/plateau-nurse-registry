@@ -56,7 +56,7 @@
 
 .notifications-eyebrow {
   color: var(--green);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.4px;
 }
@@ -208,7 +208,7 @@
   border-radius: 20px;
   background: var(--green-light);
   color: var(--green);
-  font-size: 13px;
+  font-size: 14px;
   display: grid;
   place-items: center;
 }

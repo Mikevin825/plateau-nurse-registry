@@ -16,6 +16,25 @@
 
   --border: #E3EAF0;
 
+  /* Accessibility-focused typography scale */
+  --font-heading-xl: 32px;        /* Main page headings: 30-34px */
+  --font-heading-lg: 22px;        /* Section headings: 20-24px */
+  --font-heading-md: 20px;
+  --font-dashboard-figure: 30px;  /* Dashboard figures: 28-32px */
+  --font-body: 16px;             /* Body text */
+  --font-table-content: 15px;    /* Table content: 15-16px */
+  --font-table-heading: 14px;    /* Table headings: 14-15px */
+  --font-label: 15px;            /* Form labels: 15-16px */
+  --font-input: 16px;            /* Input text */
+  --font-button: 15px;           /* Buttons: 15-16px */
+  --font-secondary: 14px;        /* Secondary info: min 14px */
+
+  /* Touch targets */
+  --touch-target-min: 44px;
+
+  /* Table horizontal scroll wrapper */
+  --table-cell-padding: 12px 16px;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

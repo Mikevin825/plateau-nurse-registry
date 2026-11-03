@@ -54,7 +54,7 @@
   display: block;
   margin-bottom: 9px;
   color: var(--green);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.5px;
 }
@@ -104,7 +104,7 @@
 
 .licence-status-heading span {
   color: var(--text-secondary);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.2px;
 }
