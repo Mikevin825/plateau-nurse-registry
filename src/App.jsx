@@ -27,6 +27,7 @@ import AdminPendingApprovals from "./pages/admin/AdminPendingApprovals";
 import AdminFlaggedRecords from "./pages/admin/AdminFlaggedRecords";
 import AdminLicenceRenewals from "./pages/admin/AdminLicenceRenewals";
 import AdminRenewalReview from "./pages/admin/AdminRenewalReview";
+import AdminRestrictedRecords from "./pages/admin/AdminRestrictedRecords";
 
 function WelcomePage() {
   return (
@@ -208,6 +209,7 @@ function App() {
         <Route path="flagged" element={<AdminFlaggedRecords />} />
         <Route path="renewals" element={<AdminLicenceRenewals />} />
         <Route path="renewals/:renewalId" element={<AdminRenewalReview />} />
+        <Route path="restricted" element={<AdminRestrictedRecords />} />
       </Route>
 
       {/* Public Verification */}
