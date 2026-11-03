@@ -1,0 +1,608 @@
+.admin-nurse-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px;
+  color: #172033;
+}
+
+.profile-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  color: #526078;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile-back-link:hover {
+  color: #176b52;
+}
+
+.profile-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.profile-eyebrow {
+  color: #16805f;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.profile-heading h1 {
+  margin: 7px 0;
+  font-size: 32px;
+  font-weight: 750;
+}
+
+.profile-heading p {
+  margin: 0;
+  color: #69758a;
+  font-size: 16px;
+}
+
+.profile-status {
+  padding: 9px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  background: #edf0f4;
+  color: #485366;
+}
+
+.profile-status.approved {
+  background: #e5f5ed;
+  color: #16734c;
+}
+
+.profile-status.pending {
+  background: #fff4d9;
+  color: #956400;
+}
+
+.profile-status.rejected,
+.profile-status.revoked {
+  background: #fdeaea;
+  color: #b42318;
+}
+
+.profile-status.flagged {
+  background: #fff0df;
+  color: #a65312;
+}
+
+.profile-status.suspended {
+  background: #eee9fb;
+  color: #6941a5;
+}
+
+.profile-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #c8dfd5;
+  border-radius: 10px;
+  background: #eff8f3;
+  color: #176b52;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.profile-identity-card {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 26px;
+  border: 1px solid #e5e9ef;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.profile-avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: #e9f4ef;
+  color: #176b52;
+}
+
+.profile-identity-details h2 {
+  margin: 0 0 6px;
+  font-size: 25px;
+}
+
+.profile-nannm-id {
+  color: #68758a;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.profile-identity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.profile-identity-meta span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #59667b;
+  font-size: 14px;
+}
+
+.profile-content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.profile-section,
+.profile-decision-section {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #e5e9ef;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.profile-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 23px;
+  color: #176b52;
+}
+
+.profile-section-heading > div {
+  min-width: 0;
+}
+
+.profile-section-heading h2 {
+  margin: 0 0 5px;
+  color: #172033;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.profile-section-heading p {
+  margin: 0;
+  color: #758096;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.profile-information-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px 18px;
+}
+
+.profile-information-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.profile-information-grid span {
+  color: #748096;
+  font-size: 14px;
+}
+
+.profile-information-grid strong {
+  overflow-wrap: anywhere;
+  color: #263247;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.profile-private-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #956400;
+  font-size: 13px;
+}
+
+.profile-document-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-document-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px;
+  border: 1px solid #e9edf2;
+  border-radius: 10px;
+}
+
+.profile-document-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9px;
+  background: #edf5f1;
+  color: #176b52;
+}
+
+.profile-document-item > div:nth-child(2) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.profile-document-item strong {
+  color: #263247;
+  font-size: 15px;
+}
+
+.profile-document-item span {
+  color: #758096;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.profile-document-placeholder {
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: #f0f2f5;
+  color: #59667b !important;
+  font-size: 12px !important;
+  font-weight: 700;
+}
+
+.profile-security-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 18px;
+  color: #68758a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.profile-security-note svg {
+  flex-shrink: 0;
+  color: #176b52;
+}
+
+.profile-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.profile-history-item {
+  display: flex;
+  gap: 13px;
+}
+
+.profile-history-marker {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #edf5f1;
+  color: #176b52;
+}
+
+.profile-history-item strong {
+  color: #263247;
+  font-size: 15px;
+}
+
+.profile-history-item p {
+  margin: 6px 0;
+  color: #68758a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.profile-history-item span {
+  color: #8993a4;
+  font-size: 13px;
+}
+
+.profile-no-flags {
+  margin: 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f7f8fa;
+  color: #68758a;
+  font-size: 14px;
+}
+
+.profile-decision-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-decision-section .profile-section-heading {
+  margin-bottom: 0;
+}
+
+.profile-decision-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.profile-decision-button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 76px;
+  padding: 14px;
+  border: 1px solid #e1e6ed;
+  border-radius: 10px;
+  background: #fff;
+  color: #344054;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.profile-decision-button:hover {
+  border-color: #176b52;
+  background: #f7fbf8;
+}
+
+.profile-decision-button > svg {
+  flex-shrink: 0;
+}
+
+.profile-decision-button span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-decision-button strong {
+  font-size: 15px;
+}
+
+.profile-decision-button small {
+  color: #758096;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.profile-decision-button.approved > svg {
+  color: #16805f;
+}
+
+.profile-decision-button.rejected > svg,
+.profile-decision-button.revoked > svg {
+  color: #c0392b;
+}
+
+.profile-decision-button.flagged > svg {
+  color: #b66a19;
+}
+
+.profile-decision-button.suspended > svg {
+  color: #7654a6;
+}
+
+.profile-decision-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #dce4e9;
+  border-radius: 10px;
+  background: #f9fbfa;
+}
+
+.profile-decision-form h3 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.profile-decision-form p {
+  margin: 0;
+  color: #68758a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.profile-decision-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: #344054;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.profile-decision-form textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 13px;
+  border: 1px solid #ccd4df;
+  border-radius: 8px;
+  background: #fff;
+  color: #172033;
+  font: inherit;
+  font-size: 15px;
+  resize: vertical;
+}
+
+.profile-decision-form textarea:focus {
+  outline: 2px solid #176b52;
+  outline-offset: 2px;
+}
+
+.profile-decision-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.profile-decision-form-actions button {
+  min-height: 44px;
+  padding: 10px 17px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.profile-cancel-button {
+  border: 1px solid #d4dae2;
+  background: #fff;
+  color: #475467;
+}
+
+.profile-submit-button {
+  border: 1px solid #176b52;
+  background: #176b52;
+  color: #fff;
+}
+
+.profile-terminal-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 9px;
+  background: #fdeeee;
+  color: #a52a2a;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.profile-decision-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 9px;
+  background: #fff7e8;
+  color: #855b13;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.profile-decision-warning svg {
+  flex-shrink: 0;
+}
+
+.admin-profile-not-found {
+  display: grid;
+  min-height: 60vh;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.admin-profile-not-found > div {
+  max-width: 440px;
+}
+
+.admin-profile-not-found svg {
+  color: #b66a19;
+}
+
+.admin-profile-not-found h1 {
+  font-size: 28px;
+}
+
+.admin-profile-not-found p {
+  color: #68758a;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.admin-profile-not-found a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: #176b52;
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .profile-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-nurse-profile {
+    gap: 18px;
+    padding: 18px 14px;
+  }
+
+  .profile-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profile-heading h1 {
+    font-size: 28px;
+  }
+
+  .profile-identity-card {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .profile-identity-details h2 {
+    font-size: 22px;
+  }
+
+  .profile-identity-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-section,
+  .profile-decision-section {
+    padding: 19px 15px;
+  }
+
+  .profile-information-grid {
+    grid-template-columns: 1fr;
+    gap: 19px;
+  }
+
+  .profile-decision-options {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-document-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .profile-document-item > div:nth-child(2) {
+    flex-basis: calc(100% - 60px);
+  }
+}
