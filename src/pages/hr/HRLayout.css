@@ -1,0 +1,309 @@
+.hr-shell {
+  min-height: 100vh;
+  display: flex;
+  background: var(--background);
+}
+
+/* Sidebar */
+
+.hr-sidebar {
+  width: 255px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 28px 18px;
+  background: var(--navy);
+  color: #fff;
+  transition: width 0.25s ease, padding 0.25s ease;
+  overflow: hidden;
+}
+
+.hr-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px;
+  margin-bottom: 30px;
+  white-space: nowrap;
+}
+
+.hr-brand-icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #a8e4d0;
+}
+
+.hr-brand-text h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.hr-brand-text span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #aebfd0;
+}
+
+.hr-hospital-identity {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 11px;
+  margin-bottom: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  color: #b9d5d0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.hr-sidebar-label {
+  padding: 0 10px;
+  margin-bottom: 13px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #b1c1d1;
+  white-space: nowrap;
+}
+
+.hr-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hr-nav-link {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 0 12px;
+  border-radius: 9px;
+  color: #c3d0dc;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hr-nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.hr-nav-link.active {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+}
+
+.hr-nav-link.active svg {
+  color: #8fe0c5;
+  flex-shrink: 0;
+}
+
+.hr-sidebar-bottom {
+  margin-top: auto;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hr-logout-link:hover {
+  color: #ffb7b7;
+}
+
+/* Collapsed sidebar */
+
+.hr-shell.sidebar-collapsed .hr-sidebar {
+  width: 82px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.hr-shell.sidebar-collapsed .hr-sidebar-brand {
+  justify-content: center;
+  padding: 0;
+}
+
+.hr-shell.sidebar-collapsed .hr-brand-text,
+.hr-shell.sidebar-collapsed .hr-hospital-identity,
+.hr-shell.sidebar-collapsed .hr-sidebar-label,
+.hr-shell.sidebar-collapsed .hr-nav-link span {
+  display: none;
+}
+
+.hr-shell.sidebar-collapsed .hr-nav-link {
+  justify-content: center;
+  padding: 0;
+}
+
+/* Main area */
+
+.hr-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.hr-topbar {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 42px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.hr-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.hr-menu-button,
+.hr-mobile-menu-button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.hr-menu-button:hover,
+.hr-mobile-menu-button:hover {
+  background: var(--green-light);
+}
+
+.hr-mobile-menu-button {
+  display: none;
+}
+
+.hr-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.hr-breadcrumb strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.hr-topbar-identity {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hr-page-content {
+  min-width: 0;
+  width: 100%;
+}
+
+/* Mobile navigation */
+
+.hr-mobile-overlay {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .hr-sidebar {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 255px;
+    min-height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+
+  .hr-shell.mobile-sidebar-open .hr-sidebar {
+    transform: translateX(0);
+  }
+
+  .hr-shell.sidebar-collapsed .hr-sidebar {
+    width: 255px;
+    padding: 28px 18px;
+  }
+
+  .hr-shell.sidebar-collapsed .hr-brand-text,
+  .hr-shell.sidebar-collapsed .hr-hospital-identity,
+  .hr-shell.sidebar-collapsed .hr-sidebar-label,
+  .hr-shell.sidebar-collapsed .hr-nav-link span {
+    display: block;
+  }
+
+  .hr-shell.sidebar-collapsed .hr-sidebar-brand {
+    justify-content: flex-start;
+    padding: 0 8px;
+  }
+
+  .hr-shell.sidebar-collapsed .hr-nav-link {
+    justify-content: flex-start;
+    padding: 0 12px;
+  }
+
+  .hr-mobile-overlay {
+    position: fixed;
+    z-index: 99;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: rgba(10, 25, 42, 0.48);
+  }
+
+  .hr-menu-button {
+    display: none;
+  }
+
+  .hr-mobile-menu-button {
+    display: grid;
+  }
+
+  .hr-topbar {
+    min-height: 72px;
+    padding: 0 18px;
+  }
+
+  .hr-topbar-identity {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hr-topbar {
+    padding: 0 13px;
+  }
+
+  .hr-topbar-left {
+    gap: 10px;
+  }
+
+  .hr-breadcrumb {
+    gap: 7px;
+    font-size: 13px;
+  }
+}
