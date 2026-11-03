@@ -23,6 +23,7 @@ import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminNurseRegistry from "./pages/admin/AdminNurseRegistry";
 import AdminNurseProfile from "./pages/admin/AdminNurseProfile";
+import AdminPendingApprovals from "./pages/admin/AdminPendingApprovals";
 
 function WelcomePage() {
   return (
@@ -200,6 +201,7 @@ function App() {
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="nurses" element={<AdminNurseRegistry />} />
         <Route path="nurses/:nurseId" element={<AdminNurseProfile />} />
+        <Route path="approvals" element={<AdminPendingApprovals />} />
       </Route>
 
       {/* Public Verification */}

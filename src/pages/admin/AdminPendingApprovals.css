@@ -1,0 +1,366 @@
+.admin-pending-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  color: #172033;
+}
+
+.pending-page-heading h1 {
+  margin: 8px 0;
+  font-size: 32px;
+  font-weight: 750;
+  color: #172033;
+}
+
+.pending-page-heading p {
+  margin: 0;
+  color: #687386;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.pending-eyebrow {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 1.1px;
+}
+
+.pending-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.pending-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 125px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e7ebf1;
+  border-radius: 13px;
+}
+
+.pending-summary-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+
+.pending-summary-icon.orange {
+  color: #b96a0b;
+  background: #fff2df;
+}
+
+.pending-summary-icon.blue {
+  color: #2563eb;
+  background: #eaf1ff;
+}
+
+.pending-summary-icon.green {
+  color: #16834a;
+  background: #e7f8ee;
+}
+
+.pending-summary-card > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pending-summary-card span {
+  color: #647084;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pending-summary-card strong {
+  color: #172033;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.pending-summary-card small {
+  color: #8590a0;
+  font-size: 14px;
+}
+
+.pending-panel {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e7ebf1;
+  border-radius: 14px;
+}
+
+.pending-panel-heading {
+  padding: 24px 25px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.pending-panel-heading h2 {
+  margin: 0 0 7px;
+  color: #172033;
+  font-size: 22px;
+}
+
+.pending-panel-heading p {
+  margin: 0;
+  color: #788496;
+  font-size: 15px;
+}
+
+.pending-filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 20px 25px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.pending-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 240px;
+  height: 46px;
+  padding: 0 13px;
+  color: #7d899a;
+  border: 1px solid #dce2ea;
+  border-radius: 8px;
+}
+
+.pending-search:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
+}
+
+.pending-search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #172033;
+  font: inherit;
+  font-size: 15px;
+}
+
+.pending-filter-control {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 210px;
+}
+
+.pending-filter-control > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #596579;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.pending-filter-control select {
+  min-height: 46px;
+  padding: 0 12px;
+  color: #263247;
+  background: #fff;
+  border: 1px solid #dce2ea;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.pending-reset-button,
+.pending-review-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pending-reset-button {
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #dce2ea;
+}
+
+.pending-reset-button:hover {
+  background: #edf1f6;
+}
+
+.pending-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.pending-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.pending-table th {
+  padding: 16px 18px;
+  color: #647084;
+  background: #f8fafc;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pending-table td {
+  padding: 17px 18px;
+  color: #465267;
+  border-top: 1px solid #edf0f4;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.pending-nurse-cell {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 190px;
+}
+
+.pending-avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  color: #2455a4;
+  background: #eaf1ff;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.pending-nurse-cell > div:last-child,
+.pending-cadre-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pending-nurse-cell strong,
+.pending-cadre-cell strong {
+  color: #253247;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pending-nurse-cell small,
+.pending-cadre-cell small {
+  color: #8490a0;
+  font-size: 14px;
+}
+
+.pending-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  color: #a45d09;
+  background: #fff4e3;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.pending-status > span {
+  width: 7px;
+  height: 7px;
+  background: #d98a20;
+  border-radius: 50%;
+}
+
+.pending-review-button {
+  min-height: 40px;
+  color: #2455a4;
+  background: #edf3ff;
+  border: 1px solid #d9e5ff;
+}
+
+.pending-review-button:hover {
+  background: #dfeaff;
+}
+
+.pending-empty-state {
+  padding: 40px !important;
+  color: #788496 !important;
+  text-align: center;
+}
+
+.pending-demo-notice {
+  padding: 16px 24px;
+  color: #788496;
+  background: #f8fafc;
+  border-top: 1px solid #edf0f4;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pending-reset-button:focus-visible,
+.pending-review-button:focus-visible,
+.pending-filter-control select:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 25%);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .pending-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-pending-page {
+    gap: 20px;
+  }
+
+  .pending-page-heading h1 {
+    font-size: 28px;
+  }
+
+  .pending-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pending-summary-card {
+    min-height: 105px;
+  }
+
+  .pending-panel-heading,
+  .pending-filters {
+    padding: 18px;
+  }
+
+  .pending-search,
+  .pending-filter-control {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .pending-reset-button {
+    width: 100%;
+  }
+}
