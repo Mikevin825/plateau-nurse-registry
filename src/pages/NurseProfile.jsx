@@ -1,5 +1,4 @@
 import {
-  ArrowLeft,
   UserRound,
   ShieldCheck,
   BriefcaseBusiness,
@@ -7,24 +6,11 @@ import {
   Camera,
 } from 'lucide-react'
 
-import { Link } from 'react-router-dom'
 import './NurseProfile.css'
 
 function NurseProfile() {
   return (
     <div className="profile-page">
-      <header className="profile-topbar">
-        <Link to="/nurse/dashboard" className="profile-back">
-          <ArrowLeft size={18} />
-          <span>Back to Dashboard</span>
-        </Link>
-
-        <div className="profile-topbar-brand">
-          <ShieldCheck size={21} />
-          <span>Nurse Registry</span>
-        </div>
-      </header>
-
       <main className="profile-content">
         <div className="profile-page-heading">
           <div>
