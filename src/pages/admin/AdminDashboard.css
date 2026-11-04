@@ -182,8 +182,11 @@
   text-decoration: none;
 }
 
+@media (hover: hover) {
+
 .admin-panel-link:hover {
   text-decoration: underline;
+}
 }
 
 /* Pending approvals table */
@@ -274,9 +277,12 @@
   white-space: nowrap;
 }
 
+@media (hover: hover) {
+
 .admin-view-button:hover {
   background: #F4F7FA;
   border-color: var(--navy-light);
+}
 }
 
 /* Recent activity */

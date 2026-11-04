@@ -61,8 +61,11 @@
   background: var(--navy, #142D4E);
 }
 
+@media (hover: hover) {
+
 .hr-reports-export-button:hover {
   background: var(--navy-light, #1E416A);
+}
 }
 
 .hr-reports-export-button:disabled,
@@ -238,8 +241,11 @@
   border-color: var(--border, #E3EAF0);
 }
 
+@media (hover: hover) {
+
 .hr-reports-reset-button:hover:not(:disabled) {
   background: #F0F4F7;
+}
 }
 
 .hr-reports-results-heading {
@@ -268,8 +274,11 @@
   background: var(--green-light, #E8F3EF);
 }
 
+@media (hover: hover) {
+
 .hr-reports-export-text-button:hover:not(:disabled) {
   background: #D9EDE5;
+}
 }
 
 .hr-reports-table-scroll {
@@ -308,8 +317,11 @@
   font-weight: 700;
 }
 
+@media (hover: hover) {
+
 .hr-reports-table tbody tr:hover {
   background: #FAFCFD;
+}
 }
 
 .hr-reports-status {

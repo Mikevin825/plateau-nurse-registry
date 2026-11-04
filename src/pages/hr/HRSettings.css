@@ -240,8 +240,11 @@
   transition: background 0.2s ease;
 }
 
+@media (hover: hover) {
+
 .hr-settings-password-form button:hover {
   background: var(--navy-light, #1E416A);
+}
 }
 
 .hr-settings-security-note {

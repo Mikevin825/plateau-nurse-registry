@@ -1,158 +1,38 @@
-import {
-  ShieldCheck,
-  LockKeyhole,
-  QrCode,
-  Download,
-  UserRound,
-  CalendarDays,
-  BriefcaseMedical,
-} from 'lucide-react'
-
-import './DigitalIDCard.css'
+import { useEffect, useState } from "react";
+import { ShieldCheck, LockKeyhole, Download, UserRound, CalendarDays, BriefcaseMedical } from "lucide-react";
+import "./DigitalIDCard.css";
+import { getNurseCard } from "../apiService";
 
 function DigitalIDCard() {
-  const nurse = {
-    name: 'Nurse Full Name',
-    registryId: 'Not yet issued',
-    licenceNumber: 'Pending verification',
-    cadre: 'Registered Nurse',
-    employer: 'Hospital not confirmed',
-    expiryDate: 'Not confirmed',
-  }
+  const [card, setCard] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    let active = true;
+    getNurseCard(token).then((data) => { if (active) setCard(data); })
+      .catch((err) => { if (active) setError(err.message); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [token]);
 
-  return (
-    <div className="digital-id-page">
-      <main className="digital-id-container">
-        <div className="digital-id-heading">
-          <div>
-            <span className="digital-id-eyebrow">NURSE PORTAL</span>
-            <h1>Digital ID Card</h1>
-            <p>
-              View your professional registry identity card and its
-              current issuance status.
-            </p>
-          </div>
+  if (loading) return <div className="digital-id-container"><p>Loading card information…</p></div>;
+  if (error) return <div className="digital-id-container"><p role="alert">{error}</p></div>;
+  const nurse = card?.nurse;
+  const available = card?.available && nurse;
 
-          <span className="digital-id-pending">
-            <LockKeyhole size={15} />
-            Not yet issued
-          </span>
-        </div>
-
-        <section className="digital-id-card">
-          <div className="digital-card-top">
-            <div className="digital-card-brand">
-              <div className="digital-card-logo">
-                <ShieldCheck size={25} />
-              </div>
-
-              <div>
-                <strong>NURSE REGISTRY</strong>
-                <span>PLATEAU STATE</span>
-              </div>
-            </div>
-
-            <span className="digital-card-type">PROFESSIONAL ID</span>
-          </div>
-
-          <div className="digital-card-body">
-            <div className="digital-card-photo">
-              <UserRound size={48} />
-            </div>
-
-            <div className="digital-card-details">
-              <span className="digital-card-label">REGISTERED NURSE</span>
-              <h2>{nurse.name}</h2>
-
-              <div className="digital-card-field">
-                <span>NANNM REGISTRY ID</span>
-                <strong>{nurse.registryId}</strong>
-              </div>
-
-              <div className="digital-card-field">
-                <span>NMCN LICENCE NUMBER</span>
-                <strong>{nurse.licenceNumber}</strong>
-              </div>
-            </div>
-
-            <div className="digital-card-qr">
-              <QrCode size={54} />
-              <span>QR CODE</span>
-              <small>Available after approval</small>
-            </div>
-          </div>
-
-          <div className="digital-card-footer">
-            <span>PLATEAU STATE NURSE REGISTRY</span>
-            <span>IDENTITY PREVIEW</span>
-          </div>
-        </section>
-
-        <div className="digital-id-notice">
-          <LockKeyhole size={21} />
-          <div>
-            <strong>Your ID card is not yet available</strong>
-            <p>
-              Your registration must be reviewed and approved by an
-              authorised registry officer before a NANNM Registry ID
-              and verification QR code can be issued.
-            </p>
-          </div>
-        </div>
-
-        <section className="digital-id-information">
-          <div className="digital-id-section-heading">
-            <h2>Card Information</h2>
-            <span>Registration details</span>
-          </div>
-
-          <div className="digital-id-info-grid">
-            <div className="digital-id-info-item">
-              <BriefcaseMedical size={19} />
-              <div>
-                <span>Professional Cadre</span>
-                <strong>{nurse.cadre}</strong>
-              </div>
-            </div>
-
-            <div className="digital-id-info-item">
-              <UserRound size={19} />
-              <div>
-                <span>Current Employer</span>
-                <strong>{nurse.employer}</strong>
-              </div>
-            </div>
-
-            <div className="digital-id-info-item">
-              <CalendarDays size={19} />
-              <div>
-                <span>Licence Expiry</span>
-                <strong>{nurse.expiryDate}</strong>
-              </div>
-            </div>
-
-            <div className="digital-id-info-item">
-              <ShieldCheck size={19} />
-              <div>
-                <span>Issuance Status</span>
-                <strong>Awaiting approval</strong>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <button className="digital-id-download" disabled>
-          <Download size={18} />
-          Download Digital ID
-        </button>
-
-        <p className="digital-id-footer-note">
-          Digital identity cards are generated only after successful
-          registration review and approval.
-        </p>
-      </main>
-    </div>
-  )
+  return <div className="digital-id-page"><main className="digital-id-container">
+    <div className="digital-id-heading"><div><span className="digital-id-eyebrow">NURSE PORTAL</span><h1>Digital ID Card</h1><p>Your registry card and public verification link.</p></div><span className="digital-id-pending">{available ? <ShieldCheck size={15} /> : <LockKeyhole size={15} />}{available ? "Approved" : "Not yet issued"}</span></div>
+    {available ? <>
+      <section className="digital-id-card"><div className="digital-card-top"><div className="digital-card-brand"><div className="digital-card-logo"><ShieldCheck size={25} /></div><div><strong>NURSE REGISTRY</strong><span>PLATEAU STATE</span></div></div><span className="digital-card-type">PROFESSIONAL ID</span></div>
+        <div className="digital-card-body"><div className="digital-card-photo">{nurse.photo ? <img src={nurse.photo} alt={`${nurse.full_name} profile`} /> : <UserRound size={48} />}</div><div className="digital-card-details"><span className="digital-card-label">REGISTERED NURSE</span><h2>{nurse.full_name}</h2><div className="digital-card-field"><span>NANNM REGISTRY ID</span><strong>{nurse.nanm_id}</strong></div><div className="digital-card-field"><span>NMCN LICENCE NUMBER</span><strong>{nurse.licence_number}</strong></div></div><div className="digital-card-qr"><img src={card.qr_url} alt={`Verification QR code for ${nurse.full_name}`} /><span>SCAN TO VERIFY</span></div></div>
+        <div className="digital-card-footer"><span>PLATEAU STATE NURSE REGISTRY</span><span>{nurse.licence_status}</span></div>
+      </section>
+      <section className="digital-id-information"><div className="digital-id-section-heading"><h2>Card Information</h2><span>Verified registry details</span></div><div className="digital-id-info-grid"><div className="digital-id-info-item"><BriefcaseMedical size={19} /><div><span>Professional Cadre</span><strong>{nurse.cadre || "Not provided"}</strong></div></div><div className="digital-id-info-item"><UserRound size={19} /><div><span>Current Employer</span><strong>{nurse.employer || "Not provided"}</strong></div></div><div className="digital-id-info-item"><CalendarDays size={19} /><div><span>Licence Expiry</span><strong>{nurse.licence_expiry ? new Date(nurse.licence_expiry).toLocaleDateString() : "Not provided"}</strong></div></div><div className="digital-id-info-item"><ShieldCheck size={19} /><div><span>Licence Status</span><strong>{nurse.licence_status}</strong></div></div></div></section>
+      <div className="digital-id-actions"><a className="digital-id-download" href={card.signed_url} target="_blank" rel="noreferrer">Open signed card</a><button className="digital-id-download" onClick={() => window.print()}><Download size={18} />Print / Save card</button></div>
+      <p className="digital-id-footer-note">The signed card link expires according to registry security settings. The QR code opens public verification.</p>
+    </> : <div className="digital-id-notice"><LockKeyhole size={21} /><div><strong>Your ID card is not yet available</strong><p>Your registration must be approved and issued a NANNM Registry ID before a signed card and QR code can be generated. Current status: {card?.record_status || "unknown"}.</p></div></div>}
+  </main></div>;
 }
 
-export default DigitalIDCard
+export default DigitalIDCard;

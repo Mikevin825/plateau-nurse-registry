@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   NavLink,
   Outlet,
@@ -9,16 +9,9 @@ import {
 
 import {
   LayoutDashboard,
-  Users,
   ClipboardCheck,
-  Flag,
   RefreshCw,
-  ShieldAlert,
   Building2,
-  UserCog,
-  FileBarChart,
-  ScrollText,
-  Settings,
   LogOut,
   ShieldCheck,
   Menu,
@@ -27,29 +20,34 @@ import {
 } from "lucide-react";
 
 import "./AdminLayout.css";
+import { getCurrentUser } from "../../apiService";
 
 const navigation = [
   { label: "Overview", path: "/admin/dashboard", icon: LayoutDashboard },
-  { label: "Nurse Registry", path: "/admin/nurses", icon: Users },
-  { label: "Pending Approvals", path: "/admin/approvals", icon: ClipboardCheck },
-  { label: "Flagged Records", path: "/admin/flagged", icon: Flag },
+  { label: "Nurse Registry", path: "/admin/nurses", icon: ClipboardCheck },
   { label: "Licence Renewals", path: "/admin/renewals", icon: RefreshCw },
-  { label: "Suspended / Revoked", path: "/admin/restricted", icon: ShieldAlert },
-  { label: "Hospitals", path: "/admin/hospitals", icon: Building2 },
-  { label: "User Management", path: "/admin/users", icon: UserCog },
-  { label: "Reports & Exports", path: "/admin/reports", icon: FileBarChart },
-  { label: "Audit Logs", path: "/admin/audit-logs", icon: ScrollText },
-  { label: "Settings", path: "/admin/settings", icon: Settings },
+  { label: "Hospital HR", path: "/admin/hr-users", icon: Building2 },
+  { label: "Supervisors", path: "/admin/supervisors", icon: ShieldCheck, adminOnly: true },
 ];
 
 function AdminLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [role, setRole] = useState("");
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    let active = true;
+    getCurrentUser(token).then((user) => { if (active) setRole(user.role); }).catch(() => {});
+    return () => { active = false; };
+  }, [token]);
+
+  const visibleNavigation = navigation.filter((item) => !item.adminOnly || role === "super_admin");
 
   const location = useLocation();
 
   const currentPage =
-    navigation.find((item) => item.path === location.pathname)?.label ||
+    visibleNavigation.find((item) => item.path === location.pathname)?.label ||
     "Overview";
 
   function closeMobileSidebar() {
@@ -82,7 +80,7 @@ function AdminLayout() {
         <div className="admin-sidebar-label">ADMINISTRATION</div>
 
         <nav className="admin-navigation" aria-label="Admin navigation">
-          {navigation.map((item) => {
+          {visibleNavigation.map((item) => {
             const Icon = item.icon;
 
             return (
@@ -106,6 +104,7 @@ function AdminLayout() {
         <div className="admin-sidebar-bottom">
           <Link
             to="/admin/login"
+            onClick={() => localStorage.removeItem("token")}
             className="admin-nav-link admin-logout-link"
           >
             <LogOut size={20} />

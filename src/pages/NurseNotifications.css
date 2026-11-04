@@ -27,8 +27,11 @@
   color: var(--text-secondary);
 }
 
+@media (hover: hover) {
+
 .notifications-back:hover {
   color: var(--green);
+}
 }
 
 .notifications-brand {
@@ -166,8 +169,11 @@
   font-weight: 600;
 }
 
+@media (hover: hover) {
+
 .mark-all-read:hover:not(:disabled) {
   background: var(--green-light);
+}
 }
 
 .mark-all-read:disabled {
@@ -327,8 +333,11 @@
   font-weight: 700;
 }
 
+@media (hover: hover) {
+
 .notification-meta button:hover {
   text-decoration: underline;
+}
 }
 
 .notifications-empty {

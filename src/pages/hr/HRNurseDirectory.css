@@ -309,9 +309,12 @@
   font-weight: 700;
 }
 
+@media (hover: hover) {
+
 .hr-directory-view-button:hover {
   border-color: var(--green);
   color: var(--green);
+}
 }
 
 .hr-directory-empty {
@@ -460,9 +463,12 @@
   color: white;
 }
 
+@media (hover: hover) {
+
 .hr-directory-confirm-button:hover {
   background: var(--navy);
   border-color: var(--navy);
+}
 }
 
 .hr-directory-cancel-button {

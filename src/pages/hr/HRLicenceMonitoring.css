@@ -348,8 +348,11 @@
   transition: background 0.2s ease;
 }
 
+@media (hover: hover) {
+
 .hr-licence-view-button:hover {
   background: #e1edf9;
+}
 }
 
 .hr-licence-empty {
