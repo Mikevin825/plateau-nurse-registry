@@ -1,3 +1,4 @@
+import { logout } from "../../apiService";
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom'
 import {
@@ -114,7 +115,7 @@ function HRLayout() {
         <div className="hr-sidebar-bottom">
           <Link
             to="/hospital/login"
-            onClick={() => localStorage.removeItem("token")}
+            onClick={() => { const token = localStorage.getItem("token"); logout(token).catch(() => {}).finally(() => localStorage.removeItem("token")); }}
             className="hr-nav-link hr-logout-link"
           >
             <LogOut size={19} />
@@ -171,7 +172,8 @@ function HRLayout() {
           </div>
         </header>
 
-        <div className="hr-page-content">
+        <a className="skip-link" href="#hr-main-content">Skip to main content</a>
+        <div id="hr-main-content" className="hr-page-content" tabIndex={-1}>
           <Outlet />
         </div>
       </div>

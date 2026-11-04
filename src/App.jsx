@@ -32,6 +32,8 @@ import HRSettings from "./pages/hr/HRSettings";
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import HRRegistration from "./pages/HRRegistration";
+import AccountSecurity from "./pages/AccountSecurity";
+import { ForgotPassword, ResetPassword } from "./pages/PasswordRecovery";
 import RoleGuard from "./components/RoleGuard";
 import RenewalReview from "./pages/admin/RenewalReview";
 import AdminNurses from "./pages/admin/AdminNurses";
@@ -172,6 +174,8 @@ function App() {
 
       {/* Nurse authentication */}
       <Route path="/nurse/login" element={<NurseLogin />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:uidb64/:token" element={<ResetPassword />} />
       <Route path="/nurse/register" element={<NurseRegister />} />
 
       {/* Nurse Portal */}
@@ -211,6 +215,8 @@ function App() {
         <Route path="hr-users" element={<AdminHRUsers />} />
         <Route path="supervisors" element={<AdminSupervisors />} />
       </Route>
+
+      <Route path="/account/security" element={<RoleGuard roles={["nurse", "hr", "super_admin", "supervisor"]}><AccountSecurity /></RoleGuard>} />
 
       {/* Public Verification */}
       <Route path="/verify" element={<PublicVerify />} />

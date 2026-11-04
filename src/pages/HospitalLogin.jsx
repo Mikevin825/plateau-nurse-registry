@@ -14,17 +14,17 @@ export default function HospitalLogin() {
     event.preventDefault(); setBusy(true); setMessage("");
     const form = new FormData(event.currentTarget);
     try {
-      const result = await loginNurse({ email: form.get("email"), password: form.get("password") });
+      const result = await loginNurse({ identifier: form.get("identifier"), password: form.get("password") });
       const token = result.token || result.access;
       if (!token) throw new Error("Sign in could not be completed. Please try again.");
       localStorage.setItem("token", token);
       const user = await getCurrentUser(token);
       if (user.role === "hr") { navigate("/hr/dashboard", { replace: true }); return; }
       localStorage.removeItem("token");
-      throw new Error("This account does not have approved hospital HR access.");
-    } catch (error) {
+      throw new Error("We could not sign you in. Check your details and try again.");
+    } catch {
       localStorage.removeItem("token");
-      setMessage(error.message || "We could not sign you in. Check your details and try again.");
+      setMessage("Sign in failed. Check your credentials and try again.");
     } finally { setBusy(false); }
   }
 
@@ -34,8 +34,9 @@ export default function HospitalLogin() {
       <section className="auth-container"><div className="auth-card hospital-auth-card">
         <div className="auth-heading"><div className="auth-icon hospital-icon"><Hospital size={26} /></div><span className="portal-label">HOSPITAL PORTAL</span><h1>Institutional access</h1><p>Sign in to review nurses associated with your institution and confirm employment.</p></div>
         <form className="auth-form" onSubmit={submit}>
-          <div className="form-group"><label htmlFor="hospital-email">Work email</label><div className="input-wrapper"><Mail size={18} /><input id="hospital-email" name="email" type="email" autoComplete="username" placeholder="name@hospital.org" required /></div></div>
+          <div className="form-group"><label htmlFor="hospital-email">Email or username</label><div className="input-wrapper"><Mail size={18} /><input id="hospital-email" name="identifier" type="text" autoComplete="username" placeholder="email or username" required /></div></div>
           <div className="form-group"><label htmlFor="hospital-password">Password</label><div className="input-wrapper"><LockKeyhole size={18} /><input id="hospital-password" name="password" type={showPassword ? "text" : "password"} autoComplete="current-password" placeholder="Enter your password" required /><button type="button" className="password-toggle" onClick={() => setShowPassword((value) => !value)} aria-label={showPassword ? "Hide password" : "Show password"}>{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}</button></div></div>
+          <div className="forgot-password-row"><Link to="/forgot-password?portal=hr">Forgot password?</Link></div>
           <button type="submit" className="auth-submit hospital-submit" disabled={busy}>{busy ? "Signing in…" : "Sign in to Hospital Portal"}<ArrowLeft size={18} className="submit-arrow" /></button>
           {message && <p className="login-message" role="alert">{message}</p>}
         </form>

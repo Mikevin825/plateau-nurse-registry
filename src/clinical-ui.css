@@ -604,3 +604,93 @@ input[type="file"]::file-selector-button {
     transition-duration: 0.01ms;
   }
 }
+
+/* Warm, quiet registry surfaces used across the public and account flows. */
+:root { --navy: #252724; --navy-light: #454842; --green: #252724; --green-light: #efeee9; --background: #f7f6f3; --text-primary: #252724; --text-secondary: #656861; --border: #e3e2dc; --clinical-shadow: none; --clinical-shadow-raised: none; }
+body { background: #f7f6f3; color: #252724; }
+:is(.auth-card,.register-section,.verify-card,.portal-card,.stat-card,.dashboard-panel,.admin-panel,.hr-panel,.hr-settings-card,.hr-directory-modal) { border: 1px solid #e8e7e2; border-radius: 12px; box-shadow: none; }
+:is(.form-group input,.form-group select,.form-group textarea,.register-grid input,.register-grid select,.register-grid textarea,.auth-form > label input,.auth-form > label select) { border-radius: 8px; }
+.input-wrapper input { min-height: 0 !important; height: auto; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; background: transparent !important; }
+.input-wrapper { overflow: hidden; border: 1px solid #d8d8d2; background: #fff; box-shadow: none; }
+.input-wrapper:focus-within { outline: 2px solid #252724; outline-offset: 2px; box-shadow: none; }
+.auth-submit,.register-submit,.verify-submit,.portal-button { border-radius: 8px; background: #252724; }
+.welcome-page { background: #f7f6f3; }
+:is(.nurse-sidebar,.hr-sidebar,.admin-sidebar) { background: #eeede8; color: #252724; border-right: 1px solid #e3e2dc; }
+:is(.nurse-sidebar,.hr-sidebar,.admin-sidebar) :is(a,span,h2) { color: inherit; }
+.skip-link { position: absolute; z-index: 30; top: -100px; left: 12px; padding: 10px 14px; background: #252724; color: white; border-radius: 6px; }
+.skip-link:focus { top: 12px; }
+
+/* Shared design tokens for public, authentication, nurse, HR, and staff pages. */
+:root {
+  --registry-canvas: #f7f6f3;
+  --registry-surface: #fff;
+  --registry-text: #2f3437;
+  --registry-muted: #787774;
+  --registry-border: #eae9e5;
+  --registry-accent: #346538;
+  --registry-focus: #496c50;
+  --background: var(--registry-canvas);
+  --surface: var(--registry-surface);
+  --text-primary: var(--registry-text);
+  --text-secondary: var(--registry-muted);
+  --border: var(--registry-border);
+  --navy: var(--registry-text);
+  --navy-light: #4c504c;
+  --green: var(--registry-accent);
+  --green-light: #edf3ec;
+  --clinical-shadow: none;
+  --clinical-shadow-raised: none;
+}
+body, button, input, select, textarea { font-family: 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+body { min-width: 320px; background: var(--registry-canvas); color: var(--registry-text); line-height: 1.6; }
+:where(a, button, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid var(--registry-focus); outline-offset: 2px; }
+:is(.welcome-page, .auth-page, .register-page, .verify-page, .nurse-shell, .hr-shell, .admin-shell) { background: var(--registry-canvas); color: var(--registry-text); }
+:is(.portal-card, .auth-card, .register-section, .verify-card, .stat-card, .dashboard-panel, .dashboard-notice,
+.profile-summary-card, .profile-information-card, .profile-review-notice, .licence-panel, .digital-id-card,
+.digital-id-information, .notifications-summary, .notifications-panel, .admin-summary-card, .admin-panel,
+.hr-summary-card, .hr-panel, .hr-directory-summary-card, .hr-directory-panel, .hr-licence-summary-card,
+.hr-licence-panel, .hr-employment-summary-card, .hr-employment-panel, .hr-reports-panel, .hr-settings-card,
+.hr-directory-modal, .hr-directory-confirm-dialog, .admin-record-modal) {
+  border: 1px solid var(--registry-border);
+  border-radius: 10px;
+  background: var(--registry-surface);
+  box-shadow: none;
+}
+:is(.auth-heading h1, .register-heading h1, .verify-heading h1, .dashboard-welcome h1, .profile-page-heading h1,
+.licence-heading h1, .digital-id-heading h1, .notifications-heading h1, .admin-page-heading h1,
+.hr-dashboard-heading h1, .hr-directory-heading h1, .hr-licence-heading h1, .hr-employment-heading h1,
+.hr-reports-header h1, .hr-settings-header h1) { color: var(--registry-text); }
+:is(.auth-form, .register-form, .verify-form, .hr-settings-password-form, .admin-record-edit-form,
+.hr-reports-filters, .hr-directory-toolbar, .hr-licence-toolbar, .hr-employment-toolbar)
+:is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea) {
+  min-height: 46px;
+  border: 1px solid var(--registry-border);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--registry-text);
+  box-shadow: none;
+}
+:is(.auth-submit, .register-submit, .verify-submit, .portal-button, .landing-primary-action,
+.digital-id-download, .admin-records-button.primary) {
+  min-height: 46px;
+  border: 1px solid #2f3437;
+  border-radius: 6px;
+  background: #2f3437;
+  color: #fff;
+  box-shadow: none;
+}
+:is(.auth-submit, .register-submit, .verify-submit, .portal-button, .landing-primary-action,
+.digital-id-download, .admin-records-button.primary):hover { background: #444946; box-shadow: none; transform: none; }
+.auth-card { border-top: 1px solid var(--registry-border); }
+.auth-form > label, .form-group label, .register-section .form-group label { color: var(--registry-text); }
+.auth-navbar, .navbar, :is(.nurse-topbar, .hr-topbar, .admin-topbar) { background: #fff; border-color: var(--registry-border); box-shadow: none; backdrop-filter: none; }
+:is(.nurse-sidebar, .hr-sidebar, .admin-sidebar) { background: #f0efeb; color: var(--registry-text); border-color: var(--registry-border); }
+:is(.nurse-sidebar, .hr-sidebar, .admin-sidebar) :is(.nurse-nav-link, .hr-nav-link, .admin-nav-link) { color: #555951; border-radius: 7px; }
+:is(.nurse-sidebar, .hr-sidebar, .admin-sidebar) :is(.nurse-nav-link, .hr-nav-link, .admin-nav-link).active { color: var(--registry-text); background: #e5e4de; box-shadow: inset 2px 0 #62685f; }
+:is(.nurse-nav-link.active svg, .hr-nav-link.active svg, .admin-nav-link.active svg) { color: #4e554c; }
+:is(.nurse-page-content, .hr-page-content, .admin-page-content) { background: var(--registry-canvas); }
+.welcome-page, .landing-hero-art::before { background-image: none; }
+.hero-id-card { border-radius: 10px; box-shadow: none; transform: none; }
+.status-dot { box-shadow: none; }
+.skip-link { background: #2f3437; color: #fff; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }

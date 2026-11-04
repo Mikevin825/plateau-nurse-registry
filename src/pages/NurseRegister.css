@@ -377,3 +377,36 @@
   font-size: 15px;
   line-height: 1.6;
 }
+
+.register-page { background: #f7f6f3; color: #252724; }
+.registration-progress { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 30px 0 22px; padding: 0; list-style: none; }
+.registration-progress li { display: flex; align-items: center; gap: 9px; min-width: 0; color: #747770; font-size: 13px; }
+.registration-progress li > span:first-child { display: grid; width: 29px; height: 29px; flex: 0 0 29px; place-items: center; border: 1px solid #d8d8d2; border-radius: 50%; background: #fff; }
+.registration-progress li.current, .registration-progress li.complete { color: #252724; font-weight: 650; }
+.registration-progress li.current > span:first-child { color: #fff; background: #252724; border-color: #252724; }
+.registration-progress li.complete > span:first-child { border-color: #8d918a; }
+.registration-wizard .register-section { border: 1px solid #e8e7e2; border-radius: 12px; box-shadow: none; }
+.registration-wizard .register-section-heading { margin-bottom: 24px; }
+.registration-wizard .register-section-heading h2 { margin: 4px 0 6px; }
+.registration-wizard .form-group input, .registration-wizard .form-group select { width: 100%; min-height: 48px; padding: 11px 13px; border: 1px solid #d8d8d2; border-radius: 8px; background: white; color: #252724; }
+.registration-wizard .form-group input:focus, .registration-wizard .form-group select:focus { outline: 2px solid #252724; outline-offset: 2px; }
+.step-field-error { display: block; margin-top: 6px; color: #9c322b; }
+.registration-message { margin: 14px 0; padding: 14px 16px; border: 1px solid #e6b9b4; border-radius: 8px; background: #fff8f7; color: #73251f; }
+.registration-message ul { margin: 8px 0 0; padding-left: 20px; }
+.registration-step-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 18px; }
+.registration-step-actions button { min-height: 48px; min-width: 132px; padding: 0 20px; border-radius: 8px; font-weight: 650; }
+.registration-step-actions .register-submit { background: #252724; }
+.registration-back { border: 1px solid #d8d8d2; background: #fff; color: #252724; }
+.registration-review { margin-top: 24px; padding: 18px; border: 1px solid #e8e7e2; border-radius: 8px; background: #fbfaf8; }
+.registration-review h3 { margin-bottom: 10px; }
+.registration-review p { margin: 6px 0; }
+.registration-pending-note, .registration-signin { text-align: center; color: #656861; }
+.registration-signin a { color: #252724; font-weight: 700; }
+@media (max-width: 650px) {
+ .registration-progress { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+ .registration-progress li { flex-direction: column; align-items: flex-start; gap: 5px; font-size: 11px; line-height: 1.25; }
+ .registration-step-actions { justify-content: stretch; }
+ .registration-step-actions button { flex: 1; }
+}
+@media (max-width: 360px) { .registration-progress li { font-size: 10px; } }
+@media (prefers-reduced-motion: reduce) { .registration-progress * { scroll-behavior: auto; } }

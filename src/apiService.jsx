@@ -35,8 +35,21 @@ export const verifyNursePublic = (nanmId) =>
   request(`/verify/${encodeURIComponent(nanmId)}/`);
 
 export const getCurrentUser = (token) => request("/me/", { token });
-export const getNurseById = (_id, token) => request("/nurse/profile/", { token });
 export const getNurseProfile = (token) => request("/nurse/profile/", { token });
+export const logout = (token) => request("/auth/logout/", { token, method: "POST", body: "{}" });
+export const changePassword = (values, token) => request("/auth/password/", { token, method: "POST", body: JSON.stringify(values) });
+export const requestPasswordReset = (email) => request("/auth/password-reset/", {
+  method: "POST", body: JSON.stringify({ email }),
+});
+export const confirmPasswordReset = (uid, token, newPassword) => request(
+  `/auth/password-reset/${encodeURIComponent(uid)}/${encodeURIComponent(token)}/`,
+  { method: "POST", body: JSON.stringify({ new_password: newPassword }) },
+);
+export const getAdminDocument = async (id, token) => {
+  const response = await fetch(`${API_BASE}/admin/documents/${id}/content/`, { headers: { Authorization: `Token ${token}` } });
+  if (!response.ok) throw new Error("Could not open this private document.");
+  return response.blob();
+};
 export const getNurseActivity = (token) => request("/nurse/activity/", { token });
 export const getNurseCard = (token) => request("/nurse/card/", { token });
 export const getHRNurses = (token) => request("/hr/nurses/", { token });
@@ -93,7 +106,7 @@ export const uploadFile = async (url, file, token) => {
 };
 
 export default {
-  loginNurse, registerNurse, verifyNursePublic, getCurrentUser, getNurseById,
+  loginNurse, registerNurse, verifyNursePublic, getCurrentUser, logout, changePassword, requestPasswordReset, confirmPasswordReset, getAdminDocument,
   getNurseProfile, getNurseActivity, getNurseCard, getHRNurses, confirmEmployment, getEmployerOptions, registerHR,
   getHRReviewQueue, reviewHRRegistration, uploadRenewal, getRenewalQueue, reviewRenewal, getAdminSummary,
   getAdminNurses, reviewAdminNurse, updateAdminNurse, createAdminNurse, deleteAdminNurse,

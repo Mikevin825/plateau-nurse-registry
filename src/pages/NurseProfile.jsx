@@ -1,4 +1,4 @@
-import { UserRound, BriefcaseBusiness, FileCheck, Camera, ShieldCheck } from "lucide-react";
+import { UserRound, BriefcaseBusiness, FileCheck, ShieldCheck } from "lucide-react";
 
 import "./NurseProfile.css"
 import useNurseProfile from "../hooks/useNurseProfile";
@@ -53,13 +53,7 @@ function NurseProfile() {
           <div className="profile-photo-wrapper">
             {photoElement}
 
-            <button
-              type="button"
-              className="profile-camera-button"
-              aria-label="Change profile photo"
-            >
-              <Camera size={15} />
-            </button>
+
           </div>
 
           <div className="profile-summary-info">

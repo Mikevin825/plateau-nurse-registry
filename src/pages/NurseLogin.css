@@ -275,10 +275,13 @@
 @media (max-width: 600px) {
   .auth-navbar {
     min-height: 75px;
-    padding: 0 5%;
+    padding: 12px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .auth-card {
+    width: calc(100vw - 36px);
     padding: 30px 23px;
   }
 
@@ -288,6 +291,11 @@
 
   .auth-heading h1 {
     font-size: 29px;
+  }
+
+  .back-link {
+    margin-left: auto;
+    white-space: nowrap;
   }
 }
 
@@ -315,3 +323,6 @@
   font-size: 14px;
   line-height: 1.6;
 }
+.auth-form .input-wrapper input { display: block; flex: 1 1 0; width: 0; min-width: 0; min-height: 48px !important; height: auto; padding: 0 8px; border: 0 !important; border-radius: 0; box-shadow: none; background: transparent; color: #252724; visibility: visible; opacity: 1; }
+.auth-form .input-wrapper { display: flex; width: 100%; min-height: 50px; overflow: visible; border: 1px solid #d8d8d2; border-radius: 8px; background: #fff; box-shadow: none; }
+.auth-form .input-wrapper:focus-within { outline: 2px solid #252724; outline-offset: 2px; }

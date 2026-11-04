@@ -1,3 +1,4 @@
+import { logout } from "../../apiService";
 
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom'
@@ -103,7 +104,7 @@ function NurseLayout() {
         <div className="nurse-sidebar-bottom">
           <Link
             to="/nurse/login"
-            onClick={() => localStorage.removeItem("token")}
+            onClick={() => { const token = localStorage.getItem("token"); logout(token).catch(() => {}).finally(() => localStorage.removeItem("token")); }}
             className="nurse-nav-link nurse-logout-link"
           >
             <LogOut size={19} />
@@ -163,7 +164,8 @@ function NurseLayout() {
           </Link>
         </header>
 
-        <div className="nurse-page-content">
+        <a className="skip-link" href="#nurse-main-content">Skip to main content</a>
+        <div id="nurse-main-content" className="nurse-page-content" tabIndex={-1}>
           <Outlet />
         </div>
       </div>
