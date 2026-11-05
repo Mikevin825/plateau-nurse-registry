@@ -1,6 +1,7 @@
 import { UserRound, FileCheck, CreditCard, ShieldCheck, Clock3, AlertCircle, ArrowUpRight, Calendar } from "lucide-react";
 import "./NurseDashboard.css";
 import useNurseProfile from "../hooks/useNurseProfile";
+import { resolveMediaUrl } from "../apiService";
 
 function NurseDashboard() {
   const { nurse, loading, error } = useNurseProfile();
@@ -119,7 +120,7 @@ function NurseDashboard() {
 
           <div className="profile-placeholder">
             <div className="profile-avatar">
-              {nurse?.photo ? <img src={nurse.photo} alt={`${nurse.full_name} profile`} /> : <UserRound size={30} />}
+              {nurse?.photo ? <img src={resolveMediaUrl(nurse.photo)} alt={`${nurse.full_name} profile`} /> : <UserRound size={30} />}
             </div>
 
             <div>

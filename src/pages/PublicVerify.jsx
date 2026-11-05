@@ -9,7 +9,7 @@ import {
   BadgeCheck,
 } from "lucide-react";
 import "./PublicVerify.css";
-import { verifyNursePublic } from "../apiService";
+import { verifyNursePublic, resolveMediaUrl } from "../apiService";
 
 function PublicVerify() {
   const [registryId, setRegistryId] = useState("");
@@ -144,7 +144,7 @@ function PublicVerify() {
                 <p>Name: <strong>{result.full_name}</strong></p>
                 <p>Licence status: <strong>{result.licence_status}</strong></p>
                 <p>Employer: <strong>{result.employer || "Not disclosed"}</strong></p>
-                {result.photo_url && <img src={result.photo_url} alt={`${result.full_name} registry photo`} />}
+                {result.photo_url && <img src={resolveMediaUrl(result.photo_url)} alt={`${result.full_name} registry photo`} />}
               </div>
             ) : <p role="alert">{errorMessage}</p>}
           </div>
