@@ -1,0 +1,7 @@
+.account-security { width: min(100% - 32px, 560px); margin: 64px auto; padding: clamp(24px, 5vw, 40px); border: 1px solid #e8e7e2; border-radius: 12px; background: #fff; color: #252724; }
+.account-security h1 { margin: 24px 0 8px; font-size: 30px; letter-spacing: -.035em; }
+.account-security p { color: #656861; }
+.account-security form { display: grid; gap: 18px; margin-top: 26px; }
+.account-security label { display: grid; gap: 8px; font-weight: 650; }
+.account-security input { min-height: 48px; padding: 10px 12px; border: 1px solid #d8d8d2; border-radius: 8px; }
+.account-security button { min-height: 48px; border: 0; border-radius: 8px; background: #252724; color: #fff; font-weight: 700; }

@@ -1,5 +1,6 @@
 
 import { useMemo, useState } from "react";
+import useHRDirectory from "../../hooks/useHRDirectory";
 import {
   Download,
   FileText,
@@ -12,81 +13,6 @@ import {
   CalendarDays,
 } from "lucide-react";
 import "./HRReports.css";
-
-// Synthetic demonstration data.
-// Replace with hospital-scoped API data during backend integration.
-const initialRecords = [
-  {
-    id: 1,
-    name: "Sarah Johnson",
-    nannmId: "NUR-2024-001",
-    ward: "Emergency",
-    cadre: "Senior Nurse",
-    status: "Active",
-    expiry: "2027-08-14",
-    registered: "2024-02-12",
-  },
-  {
-    id: 2,
-    name: "David Williams",
-    nannmId: "NUR-2023-014",
-    ward: "Paediatrics",
-    cadre: "Staff Nurse",
-    status: "Expiring Soon",
-    expiry: "2026-12-15",
-    registered: "2023-06-20",
-  },
-  {
-    id: 3,
-    name: "Grace Anderson",
-    nannmId: "NUR-2022-028",
-    ward: "Maternity",
-    cadre: "Nurse Midwife",
-    status: "Expired",
-    expiry: "2026-09-30",
-    registered: "2022-04-18",
-  },
-  {
-    id: 4,
-    name: "Michael Brown",
-    nannmId: "NUR-2024-037",
-    ward: "Surgery",
-    cadre: "Senior Nurse",
-    status: "Active",
-    expiry: "2027-05-22",
-    registered: "2024-09-03",
-  },
-  {
-    id: 5,
-    name: "Elizabeth James",
-    nannmId: "NUR-2021-042",
-    ward: "Outpatient",
-    cadre: "Staff Nurse",
-    status: "Suspended",
-    expiry: "2027-01-10",
-    registered: "2021-11-09",
-  },
-  {
-    id: 6,
-    name: "Samuel Thomas",
-    nannmId: "NUR-2023-056",
-    ward: "Emergency",
-    cadre: "Nurse Specialist",
-    status: "Active",
-    expiry: "2027-11-02",
-    registered: "2023-03-15",
-  },
-  {
-    id: 7,
-    name: "Rebecca Paul",
-    nannmId: "NUR-2025-061",
-    ward: "Maternity",
-    cadre: "Staff Nurse",
-    status: "Revoked",
-    expiry: "2026-07-19",
-    registered: "2025-01-17",
-  },
-];
 
 const statusOptions = [
   "All statuses",
@@ -116,7 +42,13 @@ function escapeCsv(value) {
 }
 
 export default function HRReports() {
-  const [records] = useState(initialRecords);
+  const { nurses, loading, error } = useHRDirectory();
+  const records = nurses.map((nurse) => ({
+    id: nurse.id, name: nurse.name, nannmId: nurse.nanm_id || nurse.nannmId,
+    ward: nurse.ward || "—", cadre: nurse.cadre || "—",
+    status: nurse.licenceStatus, expiry: nurse.expiry,
+    registered: nurse.created_at ? nurse.created_at.slice(0, 10) : "",
+  }));
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("All statuses");
   const [dateFrom, setDateFrom] = useState("");
@@ -303,6 +235,8 @@ export default function HRReports() {
         </article>
       </section>
 
+      {loading && <p role="status">Loading employer records…</p>}
+      {error && <p role="alert">{error}</p>}
       <section className="hr-reports-panel">
         <div className="hr-reports-panel-heading">
           <div>

@@ -17,7 +17,7 @@ export default function NurseLogin({ portal = "nurse" }) {
     setMessage("");
     const form = new FormData(event.currentTarget);
     try {
-      const result = await loginNurse({ email: form.get("email"), password: form.get("password") });
+      const result = await loginNurse({ identifier: form.get("identifier"), password: form.get("password") });
       const token = result.token || result.access;
       if (!token) throw new Error("Sign in could not be completed. Please try again.");
       localStorage.setItem("token", token);
@@ -31,12 +31,10 @@ export default function NurseLogin({ portal = "nurse" }) {
         return;
       }
       localStorage.removeItem("token");
-      throw new Error(isStaffPortal
-        ? "This account does not have registry staff access."
-        : "This account is not a nurse account. Use the hospital or staff sign in.");
-    } catch (error) {
+      throw new Error("We could not sign you in. Check your details and try again.");
+    } catch {
       localStorage.removeItem("token");
-      setMessage(error.message || "We could not sign you in. Check your details and try again.");
+      setMessage("Sign in failed. Check your credentials and try again.");
     } finally {
       setBusy(false);
     }
@@ -47,10 +45,11 @@ export default function NurseLogin({ portal = "nurse" }) {
       <header className="auth-navbar"><Link to="/" className="brand"><div className="brand-icon"><ShieldCheck size={25} /></div><div className="brand-text"><h2>Nurse Registry</h2><span>PLATEAU STATE</span></div></Link><Link to="/" className="back-link"><ArrowLeft size={16} /> Back to home</Link></header>
       <section className="auth-container">
         <div className="auth-card">
-          <div className="auth-heading"><div className="auth-icon nurse-icon"><ShieldCheck size={26} /></div><span className="portal-label">{isStaffPortal ? "REGISTRY STAFF" : "NURSE PORTAL"}</span><h1>{isStaffPortal ? "Staff sign in" : "Welcome back"}</h1><p>{isStaffPortal ? "Sign in with your registry staff email to review and manage records." : "Access your nurse profile, licence information and registry services."}</p></div>
+          <div className="auth-heading"><div className="auth-icon nurse-icon"><ShieldCheck size={26} /></div><span className="portal-label">{isStaffPortal ? "REGISTRY STAFF" : "NURSE PORTAL"}</span><h1>{isStaffPortal ? "Staff sign in" : "Welcome back"}</h1><p>{isStaffPortal ? "Use your registry staff email or username and password to continue." : "Access your nurse profile, licence information and registry services."}</p></div>
           <form className="auth-form" onSubmit={submit}>
-            <div className="form-group"><label htmlFor="login-email">Email address</label><div className="input-wrapper"><Mail size={18} /><input id="login-email" name="email" type="email" autoComplete="username" placeholder="name@example.com" required /></div></div>
+            <div className="form-group"><label htmlFor="login-email">Email or username</label><div className="input-wrapper"><Mail size={18} /><input id="login-email" name="identifier" type="text" autoComplete="username" placeholder="name@example.com or username" required /></div></div>
             <div className="form-group"><label htmlFor="login-password">Password</label><div className="input-wrapper"><LockKeyhole size={18} /><input id="login-password" name="password" type={showPassword ? "text" : "password"} autoComplete="current-password" placeholder="Enter your password" required /><button type="button" className="password-toggle" onClick={() => setShowPassword((value) => !value)} aria-label={showPassword ? "Hide password" : "Show password"}>{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}</button></div></div>
+            <div className="forgot-password-row"><Link to={isStaffPortal ? "/forgot-password?portal=admin" : "/forgot-password?portal=nurse"}>Forgot password?</Link></div>
             <button type="submit" className="auth-submit" disabled={busy}>{busy ? "Signing in…" : isStaffPortal ? "Sign in to Staff Workspace" : "Sign in to Nurse Portal"}<ArrowLeft size={18} className="submit-arrow" /></button>
             {message && <p className="login-message" role="alert">{message}</p>}
           </form>

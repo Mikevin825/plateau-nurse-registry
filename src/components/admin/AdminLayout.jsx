@@ -1,3 +1,4 @@
+import { logout } from "../../apiService";
 
 import { useEffect, useState } from "react";
 import {
@@ -104,7 +105,7 @@ function AdminLayout() {
         <div className="admin-sidebar-bottom">
           <Link
             to="/admin/login"
-            onClick={() => localStorage.removeItem("token")}
+            onClick={() => { const token = localStorage.getItem("token"); logout(token).catch(() => {}).finally(() => localStorage.removeItem("token")); }}
             className="admin-nav-link admin-logout-link"
           >
             <LogOut size={20} />

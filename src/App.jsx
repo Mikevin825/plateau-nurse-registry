@@ -39,6 +39,8 @@ import AdminLicenceRenewals from "./pages/admin/AdminLicenceRenewals";
 import AdminRenewalReview from "./pages/admin/AdminRenewalReview";
 import AdminRestrictedRecords from "./pages/admin/AdminRestrictedRecords";
 import HRRegistration from "./pages/HRRegistration";
+import AccountSecurity from "./pages/AccountSecurity";
+import { ForgotPassword, ResetPassword } from "./pages/PasswordRecovery";
 import RoleGuard from "./components/RoleGuard";
 import RenewalReview from "./pages/admin/RenewalReview";
 import AdminNurses from "./pages/admin/AdminNurses";
@@ -179,6 +181,8 @@ function App() {
 
       {/* Nurse authentication */}
       <Route path="/nurse/login" element={<NurseLogin />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:uidb64/:token" element={<ResetPassword />} />
       <Route path="/nurse/register" element={<NurseRegister />} />
 
       {/* Nurse Portal */}
@@ -228,6 +232,8 @@ function App() {
         <Route path="demo/renewals/:renewalId" element={<AdminRenewalReview />} />
         <Route path="demo/restricted" element={<AdminRestrictedRecords />} />
       </Route>
+
+      <Route path="/account/security" element={<RoleGuard roles={["nurse", "hr", "super_admin", "supervisor"]}><AccountSecurity /></RoleGuard>} />
 
       {/* Public Verification */}
       <Route path="/verify" element={<PublicVerify />} />

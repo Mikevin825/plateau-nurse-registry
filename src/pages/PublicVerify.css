@@ -196,3 +196,31 @@
     padding: 26px 18px;
   }
 }
+
+/* Registry result is presented at the lookup point, without a page-length result section. */
+.verify-dialog { position: fixed; inset: 0; width: min(92vw, 480px); max-width: none; height: fit-content; max-height: min(86dvh, 680px); margin: auto; padding: 0; overflow: auto; box-sizing: border-box; border: 1px solid #e4e3df; border-radius: 12px; color: #252724; background: #fff; }
+.verify-dialog::backdrop { background: rgb(22 25 23 / 48%); }
+.verify-dialog-content { position: relative; padding: 32px; overflow: auto; }
+.verify-dialog-close { position: absolute; top: 14px; right: 16px; border: 0; background: transparent; color: #464944; font-size: 28px; line-height: 1; cursor: pointer; }
+.verify-dialog-kicker { color: #696d67; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+.verify-dialog-content h2 { margin: 9px 0 22px; font-size: 25px; letter-spacing: -.03em; }
+.verify-photo { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; }
+.verify-nurse-name { margin: 16px 0 4px; font-size: 21px; font-weight: 700; }
+.verify-registry-id { color: #696d67; font-size: 14px; }
+.verify-result-details { display: grid; gap: 0; margin: 20px 0 24px; border-top: 1px solid #e9e8e4; }
+.verify-result-details div { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid #e9e8e4; }
+.verify-result-details dt { color: #696d67; }
+.verify-result-details dd { margin: 0; text-align: right; font-weight: 650; }
+.verify-error { margin: 8px 0 0; color: #9c322b; }
+.verify-submit { border: 0; border-radius: 8px; background: #252724; color: #fff; }
+.verify-submit:hover { background: #3a3d39; transform: none; }
+.verify-card { border-radius: 12px; box-shadow: none; }
+.verify-page { background: #f7f6f3; color: #252724; }
+.verify-heading h1, .verify-card-heading h2 { color: #252724; }
+.verify-heading p, .verify-card-heading p { color: #656861; }
+@media (max-width: 560px) {
+ .verify-dialog { width: min(92vw, 440px); max-height: 88dvh; border-radius: 12px; }
+ .verify-dialog-content { padding: 48px 22px 24px; }
+ .verify-result-details div { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) { .verify-submit { transition: none; } }
