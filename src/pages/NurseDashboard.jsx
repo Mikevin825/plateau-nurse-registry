@@ -1,4 +1,14 @@
-import { UserRound, FileCheck, CreditCard, ShieldCheck, Clock3, AlertCircle, ArrowUpRight, Calendar } from "lucide-react";
+import {
+  UserRound,
+  FileCheck,
+  CreditCard,
+  ShieldCheck,
+  Clock3,
+  AlertCircle,
+  ArrowUpRight,
+  Calendar,
+  RefreshCw,
+} from "lucide-react";
 import "./NurseDashboard.css";
 import useNurseProfile from "../hooks/useNurseProfile";
 import { resolveMediaUrl } from "../apiService";
@@ -22,11 +32,18 @@ function NurseDashboard() {
           </div>
         </div>
       </section>
-    )
+    );
   }
-  if (error || !nurse) return <section className="dashboard-content"><p role="alert">{error || "We could not load your nurse record."}</p></section>;
+  if (error || !nurse)
+    return (
+      <section className="dashboard-content">
+        <p role="alert">{error || "We could not load your nurse record."}</p>
+      </section>
+    );
 
-  const expiryDisplay = nurse?.licence_expiry ? new Date(nurse.licence_expiry).toLocaleDateString() : "Not yet confirmed";
+  const expiryDisplay = nurse?.licence_expiry
+    ? new Date(nurse.licence_expiry).toLocaleDateString()
+    : "Not yet confirmed";
 
   return (
     <section className="dashboard-content">
@@ -68,9 +85,7 @@ function NurseDashboard() {
           </div>
 
           <h2>{nurse?.licence_status || "Not Verified"}</h2>
-          <span className="stat-description">
-            Licence review is pending
-          </span>
+          <span className="stat-description">Licence review is pending</span>
         </article>
 
         <article className="stat-card">
@@ -81,7 +96,7 @@ function NurseDashboard() {
             </div>
           </div>
 
-          <h2>{nurse && nurse.nanm_id || "Not Issued"}</h2>
+          <h2>{(nurse && nurse.nanm_id) || "Not Issued"}</h2>
           <span className="stat-description">
             Issued after registration approval
           </span>
@@ -95,7 +110,11 @@ function NurseDashboard() {
         </div>
 
         <div className="notice-content">
-          <h3>{nurse && nurse.record_status === "approved" ? "Registration approved" : "Your registration is under review"}</h3>
+          <h3>
+            {nurse && nurse.record_status === "approved"
+              ? "Registration approved"
+              : "Your registration is under review"}
+          </h3>
           <p>
             {nurse && nurse.record_status === "approved"
               ? "Your NANNM Registry ID is: " + (nurse.nanm_id || "pending")
@@ -120,12 +139,24 @@ function NurseDashboard() {
 
           <div className="profile-placeholder">
             <div className="profile-avatar">
-              {nurse?.photo ? <img src={resolveMediaUrl(nurse.photo)} alt={`${nurse.full_name} profile`} /> : <UserRound size={30} />}
+              {nurse?.photo ? (
+                <img
+                  src={resolveMediaUrl(nurse.photo)}
+                  alt={`${nurse.full_name} profile`}
+                />
+              ) : (
+                <UserRound size={30} />
+              )}
             </div>
 
             <div>
-              <h4>{nurse && nurse.full_name || "Profile not yet verified"}</h4>
-              <p>{nurse && nurse.employer || "Your approved details will appear here."}</p>
+              <h4>
+                {(nurse && nurse.full_name) || "Profile not yet verified"}
+              </h4>
+              <p>
+                {(nurse && nurse.employer) ||
+                  "Your approved details will appear here."}
+              </p>
             </div>
           </div>
 
@@ -133,17 +164,21 @@ function NurseDashboard() {
 
           <div className="profile-detail">
             <span>Licence number</span>
-            <strong>{nurse && nurse.licence_number || "Pending verification"}</strong>
+            <strong>
+              {(nurse && nurse.licence_number) || "Pending verification"}
+            </strong>
           </div>
 
           <div className="profile-detail">
             <span>Current employer</span>
-            <strong>{nurse && nurse.employer || "Pending verification"}</strong>
+            <strong>
+              {(nurse && nurse.employer) || "Pending verification"}
+            </strong>
           </div>
 
           <div className="profile-detail">
             <span>Professional cadre</span>
-            <strong>{nurse && nurse.cadre || "Pending verification"}</strong>
+            <strong>{(nurse && nurse.cadre) || "Pending verification"}</strong>
           </div>
         </section>
 
@@ -153,31 +188,73 @@ function NurseDashboard() {
               <h3>Licence & Renewal</h3>
               <p>Manage your professional licence</p>
             </div>
+            <RefreshCw size={20} />
           </div>
 
           <div className="licence-info">
-            {nurse && nurse.licence_expiry ? (
-              <div>
-                <Calendar size={16} /> <strong>Expiry date:</strong> {expiryDisplay}
-              </div>
-            ) : (
-              <p>No licence information on file yet.</p>
-            )}
+            <div className="licence-status-row">
+              <span>Current licence status</span>
+              <span
+                className={`licence-status-badge ${nurse.licence_status?.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                {nurse.licence_status || "Not verified"}
+              </span>
+            </div>
 
-            {nurse && nurse.record_status === "approved" && (
-              <div>
-                <strong>Renewal:</strong> Your licence is active and eligible for renewal.
+            <div className="licence-expiry-box">
+              <div className="licence-expiry-icon">
+                <Calendar size={20} />
               </div>
-            )}
+              <div>
+                <span>Licence expiry date</span>
+                <strong>{expiryDisplay}</strong>
+              </div>
+            </div>
 
-            {nurse && nurse.record_status !== "approved" && (
-              <p>Renewal options available after registration approval.</p>
-            )}
+            <div className="licence-renewal-message">
+              {nurse.licence_status === "Licensed" && (
+                <p>
+                  Your licence is valid. Keep track of your expiry date to renew
+                  on time.
+                </p>
+              )}
+
+              {nurse.licence_status === "Expiring soon" && (
+                <p>
+                  Your licence is approaching its expiry date. Please prepare
+                  your renewal documents.
+                </p>
+              )}
+
+              {nurse.licence_status === "Expired" && (
+                <p>
+                  Your licence has expired. Contact the registry for guidance on
+                  renewal.
+                </p>
+              )}
+
+              {[
+                "Pending",
+                "Rejected",
+                "Flagged",
+                "Suspended",
+                "Revoked",
+              ].includes(nurse.licence_status) && (
+                <p>
+                  Renewal is currently unavailable. Please contact the registry
+                  for further guidance.
+                </p>
+              )}
+
+              {!nurse.licence_status && (
+                <p>Your licence information is not yet available.</p>
+              )}
+            </div>
           </div>
         </section>
       </div>
     </section>
-  )
+  );
 }
 
-export default NurseDashboard
+export default NurseDashboard;

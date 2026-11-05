@@ -120,6 +120,20 @@
 .profile-photo-wrapper {
   position: relative;
   flex-shrink: 0;
+  width: 82px;
+  height: 82px;
+}
+
+.profile-photo-wrapper img {
+  display: block;
+  width: 82px;
+  height: 82px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-camera-button {
+  z-index: 1;
 }
 
 .profile-photo-placeholder {
