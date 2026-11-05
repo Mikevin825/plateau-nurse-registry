@@ -95,14 +95,13 @@
 
 /* Digital ID card */
 
-.digital-id-card {
+.digital-id-page .digital-id-card {
   overflow: hidden;
+  border: 1px solid #CBD5E1;
   border-radius: 18px;
-  background: linear-gradient(125deg, #142D4E 0%, #1D4268 65%, #167D68 140%);
-  color: #FFFFFF;
-  box-shadow: 0 18px 40px rgba(20, 45, 78, 0.17);
-  background-color: #ffffff;
-  color: #000000;
+  background: #FFFFFF;
+  color: #142D4E;
+  box-shadow: 0 18px 40px rgba(20, 45, 78, 0.12);
   padding: 20px;
 }
 
@@ -111,7 +110,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid #D7E0E8;
 }
 
 .digital-card-brand {
@@ -126,7 +125,8 @@
   border-radius: 12px;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.13);
+  background: #E5F3EA;
+  color: #14532D;
 }
 
 .digital-card-brand strong,
@@ -135,6 +135,7 @@
 }
 
 .digital-card-brand strong {
+  color: #142D4E;
   font-family: 'Manrope', sans-serif;
   font-size: 17px;
   letter-spacing: 0.7px;
@@ -142,16 +143,17 @@
 
 .digital-card-brand span {
   margin-top: 4px;
-  color: #B9D4E6;
+  color: #166534;
   font-size: 14px;
   letter-spacing: 1.5px;
 }
 
 .digital-card-type {
   padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid #166534;
   border-radius: 5px;
-  color: #D8E9F3;
+  background: #E5F3EA;
+  color: #14532D;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -169,16 +171,16 @@
 .digital-card-photo {
   width: 105px;
   height: 125px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid #CBD5E1;
   border-radius: 9px;
-  background: rgba(255, 255, 255, 0.12);
+  background: #F1F5F9;
   display: grid;
   place-items: center;
-  color: #C7DCEB;
+  color: #334155;
 }
 
 .digital-card-label {
-  color: #A9D9CB;
+  color: #166534;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.3px;
@@ -186,6 +188,7 @@
 
 .digital-card-details h2 {
   margin: 8px 0 19px;
+  color: #142D4E;
   font-family: 'Manrope', sans-serif;
   font-size: 22px;
   overflow-wrap: anywhere;
@@ -202,22 +205,24 @@
 
 .digital-card-field span {
   margin-bottom: 4px;
-  color: #B9D4E6;
+  color: #526579;
   font-size: 14px;
   letter-spacing: 1px;
 }
 
 .digital-card-field strong {
+  color: #142D4E;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   overflow-wrap: anywhere;
 }
 
 .digital-card-qr {
   min-height: 125px;
   padding: 12px 7px;
+  border: 1px solid #D7E0E8;
   border-radius: 9px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #F8FAFC;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,17 +232,18 @@
 }
 
 .digital-card-qr svg {
-  color: #FFFFFF;
+  color: #142D4E;
 }
 
 .digital-card-qr span {
+  color: #14532D;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .digital-card-qr small {
-  color: #C6D9E6;
+  color: #526579;
   font-size: 14px;
 }
 
@@ -246,8 +252,8 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  color: #C1D7E5;
+  border-top: 1px solid #D7E0E8;
+  color: #14532D;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.8px;

@@ -150,14 +150,6 @@ function DigitalIDCard() {
               </div>
             </section>
             <div className="digital-id-actions">
-              <a
-                className="digital-id-download"
-                href={card.signed_url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open signed card
-              </a>
               <button
                 className="digital-id-download"
                 onClick={() => window.print()}
