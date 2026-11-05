@@ -31,6 +31,13 @@ import HRReports from "./pages/hr/HRReports";
 import HRSettings from "./pages/hr/HRSettings";
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminNurseRegistry from "./pages/admin/AdminNurseRegistry";
+import AdminNurseProfile from "./pages/admin/AdminNurseProfile";
+import AdminPendingApprovals from "./pages/admin/AdminPendingApprovals";
+import AdminFlaggedRecords from "./pages/admin/AdminFlaggedRecords";
+import AdminLicenceRenewals from "./pages/admin/AdminLicenceRenewals";
+import AdminRenewalReview from "./pages/admin/AdminRenewalReview";
+import AdminRestrictedRecords from "./pages/admin/AdminRestrictedRecords";
 import HRRegistration from "./pages/HRRegistration";
 import AccountSecurity from "./pages/AccountSecurity";
 import { ForgotPassword, ResetPassword } from "./pages/PasswordRecovery";
@@ -209,11 +216,21 @@ function App() {
       <Route path="/admin" element={<RoleGuard roles={["super_admin", "supervisor"]} redirectTo="/admin/login"><AdminLayout /></RoleGuard>}>
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AdminDashboard />} />
+        {/* Operational API-connected admin pages */}
         <Route path="hr-registrations" element={<Navigate to="/admin/hr-users?tab=review" replace />} />
-        <Route path="renewals" element={<RenewalReview />} />
         <Route path="nurses" element={<AdminNurses />} />
+        <Route path="renewals" element={<RenewalReview />} />
         <Route path="hr-users" element={<AdminHRUsers />} />
         <Route path="supervisors" element={<AdminSupervisors />} />
+
+        {/* Preserved local demo pages */}
+        <Route path="demo/registry" element={<AdminNurseRegistry />} />
+        <Route path="demo/nurses/:nurseId" element={<AdminNurseProfile />} />
+        <Route path="demo/approvals" element={<AdminPendingApprovals />} />
+        <Route path="demo/flagged" element={<AdminFlaggedRecords />} />
+        <Route path="demo/renewals" element={<AdminLicenceRenewals />} />
+        <Route path="demo/renewals/:renewalId" element={<AdminRenewalReview />} />
+        <Route path="demo/restricted" element={<AdminRestrictedRecords />} />
       </Route>
 
       <Route path="/account/security" element={<RoleGuard roles={["nurse", "hr", "super_admin", "supervisor"]}><AccountSecurity /></RoleGuard>} />

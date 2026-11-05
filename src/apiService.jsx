@@ -1,4 +1,11 @@
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/$/, "");
+export const resolveMediaUrl = (url) => {
+  if (!url) return "";
+  if (/^(https?:|data:|blob:)/i.test(url)) return url;
+
+  const backendOrigin = new URL(API_BASE, window.location.origin).origin;
+  return new URL(url, backendOrigin).href;
+};
 
 async function request(path, { token, ...options } = {}) {
   const headers = new Headers(options.headers || {});

@@ -217,6 +217,15 @@
   border-radius: 50%;
   background: #edf2f6;
   color: #8495a6;
+  overflow: hidden;
+}
+
+.profile-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profile-placeholder h4,
@@ -303,4 +312,92 @@
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
+}
+
+/* Licence and Renewal Card */
+
+.licence-info {
+  margin-top: 26px;
+}
+
+.licence-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.licence-status-badge {
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e8f3ef;
+  color: #167d68;
+}
+
+.licence-status-badge.expiring-soon {
+  background: #fff4dc;
+  color: #a87920;
+}
+
+.licence-status-badge.expired,
+.licence-status-badge.rejected,
+.licence-status-badge.revoked,
+.licence-status-badge.suspended,
+.licence-status-badge.flagged {
+  background: #fdecec;
+  color: #bd4545;
+}
+
+.licence-status-badge.pending,
+.licence-status-badge.not-verified {
+  background: #edf2f6;
+  color: #64748b;
+}
+
+.licence-expiry-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f9fbfa;
+}
+
+.licence-expiry-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.licence-expiry-box span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.licence-expiry-box strong {
+  color: var(--navy);
+  font-size: 16px;
+}
+
+.licence-renewal-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 9px;
+  background: #f5f8f7;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
 }

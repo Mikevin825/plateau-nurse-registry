@@ -2,6 +2,7 @@ import { UserRound, BriefcaseBusiness, FileCheck, ShieldCheck } from "lucide-rea
 
 import "./NurseProfile.css"
 import useNurseProfile from "../hooks/useNurseProfile";
+import { resolveMediaUrl } from "../apiService";
 
 function NurseProfile() {
   const { nurse, loading, error } = useNurseProfile();
@@ -29,7 +30,7 @@ function NurseProfile() {
   if (error || !nurse) return <div className="profile-page"><main className="profile-content"><p role="alert">{error || "We could not load your nurse record."}</p></main></div>;
 
   const photoElement = nurse.photo
-    ? <img src={nurse.photo} alt={`${nurse.full_name} profile`} />
+    ? <img src={resolveMediaUrl(nurse.photo)} alt={`${nurse.full_name} profile`} />
     : <div className="profile-photo-placeholder"><UserRound size={42} /></div>;
 
   return (
