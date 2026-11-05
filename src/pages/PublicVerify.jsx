@@ -99,7 +99,7 @@ function PublicVerify() {
                 <input
                   type="text"
                   id="registry-id"
-                  placeholder="e.g. PSNR-2026-00001"
+                  placeholder="e.g. PLT-NUR-000001"
                   value={registryId}
                   onChange={(event) => setRegistryId(event.target.value)}
                   required

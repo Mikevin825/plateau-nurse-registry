@@ -443,3 +443,155 @@
     padding: 0 17px;
   }
 }
+
+
+/* Notification interactions */
+
+.notification-item {
+  cursor: pointer;
+  transition: background 0.2s ease;
+  outline: none;
+}
+
+.notification-item:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: -2px;
+}
+
+@media (hover: hover) {
+  .notification-item:hover {
+    background: #F8FBFA;
+  }
+}
+
+.notification-item.read .notification-unread-dot {
+  display: none;
+}
+
+.notification-open-hint {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Notification details popup */
+
+.notification-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 29, 46, 0.58);
+  backdrop-filter: blur(3px);
+}
+
+.notification-details-modal {
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 26px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.notification-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.notification-modal-header h2 {
+  margin-top: 7px;
+  color: var(--navy);
+  font-family: 'Manrope', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.notification-modal-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.notification-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 24px 0;
+}
+
+.notification-modal-body > div:not(:first-child) {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.notification-modal-body h3 {
+  color: var(--navy);
+  font-size: 18px;
+}
+
+.notification-modal-body p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.notification-modal-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+.notification-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.notification-modal-footer button {
+  min-height: 44px;
+  padding: 9px 22px;
+  color: #FFFFFF;
+  background: var(--navy);
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.notification-modal-footer button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .notifications-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .notification-details-modal {
+    padding: 20px;
+  }
+}

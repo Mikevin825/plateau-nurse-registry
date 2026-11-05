@@ -1,5 +1,4 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
 import {
   Search,
   Filter,
@@ -103,7 +102,7 @@ const statusOptions = [
 ];
 
 function AdminNurseRegistry() {
-  const navigate = useNavigate();
+  const [selectedNurse, setSelectedNurse] = useState(null);
 
   const [nurses] = useState(initialNurses);
   const [search, setSearch] = useState("");
@@ -111,6 +110,22 @@ function AdminNurseRegistry() {
   const [hospitalFilter, setHospitalFilter] = useState("All hospitals");
   const [cadreFilter, setCadreFilter] = useState("All cadres");
   const [wardFilter, setWardFilter] = useState("All wards");
+
+  useEffect(() => {
+    if (!selectedNurse) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSelectedNurse(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedNurse]);
 
   const hospitals = useMemo(
     () => [...new Set(nurses.map((nurse) => nurse.hospital))],
@@ -137,12 +152,10 @@ function AdminNurseRegistry() {
         nurse.id.toLowerCase().includes(query);
 
       const matchesStatus =
-        statusFilter === "All statuses" ||
-        nurse.status === statusFilter;
+        statusFilter === "All statuses" || nurse.status === statusFilter;
 
       const matchesHospital =
-        hospitalFilter === "All hospitals" ||
-        nurse.hospital === hospitalFilter;
+        hospitalFilter === "All hospitals" || nurse.hospital === hospitalFilter;
 
       const matchesCadre =
         cadreFilter === "All cadres" || nurse.cadre === cadreFilter;
@@ -158,14 +171,7 @@ function AdminNurseRegistry() {
         matchesWard
       );
     });
-  }, [
-    nurses,
-    search,
-    statusFilter,
-    hospitalFilter,
-    cadreFilter,
-    wardFilter,
-  ]);
+  }, [nurses, search, statusFilter, hospitalFilter, cadreFilter, wardFilter]);
 
   const resetFilters = () => {
     setSearch("");
@@ -376,12 +382,10 @@ function AdminNurseRegistry() {
                     <button
                       type="button"
                       className="registry-view-button"
-                      onClick={() =>
-                        navigate(`/admin/nurses/${encodeURIComponent(nurse.id)}`)
-                      }
+                      onClick={() => setSelectedNurse(nurse)}
                     >
                       <Eye size={17} />
-                      View profile
+                      View
                     </button>
                   </td>
                 </tr>
@@ -404,6 +408,101 @@ function AdminNurseRegistry() {
           </table>
         </div>
       </section>
+
+      {selectedNurse && (
+        <div
+          className="registry-modal-overlay"
+          onClick={() => setSelectedNurse(null)}
+        >
+          <section
+            className="registry-details-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="registry-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <header className="registry-modal-header">
+              <div>
+                <span className="registry-eyebrow">NURSE RECORD</span>
+                <h2 id="registry-modal-title">Nurse details</h2>
+                <p>Professional registration information</p>
+              </div>
+
+              <button
+                type="button"
+                className="registry-modal-close"
+                onClick={() => setSelectedNurse(null)}
+                aria-label="Close nurse details"
+              >
+                <X size={21} />
+              </button>
+            </header>
+
+            <div className="registry-modal-profile">
+              <span className="registry-modal-avatar">
+                {selectedNurse.name
+                  .split(" ")
+                  .map((part) => part[0])
+                  .join("")}
+              </span>
+
+              <div>
+                <h3>{selectedNurse.name}</h3>
+                <span>{selectedNurse.id}</span>
+              </div>
+            </div>
+
+            <div className="registry-modal-details">
+              <div>
+                <span>Hospital</span>
+                <strong>{selectedNurse.hospital}</strong>
+              </div>
+
+              <div>
+                <span>Ward</span>
+                <strong>{selectedNurse.ward}</strong>
+              </div>
+
+              <div>
+                <span>Professional cadre</span>
+                <strong>{selectedNurse.cadre}</strong>
+              </div>
+
+              <div>
+                <span>Specialty</span>
+                <strong>{selectedNurse.specialty}</strong>
+              </div>
+
+              <div>
+                <span>Licence status</span>
+                <strong>
+                  <span
+                    className={`registry-status ${selectedNurse.status.toLowerCase()}`}
+                  >
+                    {selectedNurse.status}
+                  </span>
+                </strong>
+              </div>
+
+              <div>
+                <span>Licence expiry date</span>
+                <strong>{selectedNurse.expiry}</strong>
+              </div>
+
+              <div>
+                <span>Registration date</span>
+                <strong>{selectedNurse.registered}</strong>
+              </div>
+            </div>
+
+            <footer className="registry-modal-footer">
+              <button type="button" onClick={() => setSelectedNurse(null)}>
+                Close
+              </button>
+            </footer>
+          </section>
+        </div>
+      )}
 
       <p className="registry-demo-notice">
         Demonstration records only. Live nurse records and licence information

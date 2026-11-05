@@ -182,6 +182,133 @@
   text-decoration: none;
 }
 
+/* Review queues */
+
+.admin-review-queues {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-review-queue {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+  padding: 17px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-review-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+}
+
+.admin-review-icon.hr {
+  color: #2865A5;
+  background: #EAF2FC;
+}
+
+.admin-review-icon.renewals {
+  color: #167D68;
+  background: #E8F3EF;
+}
+
+.admin-review-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.admin-review-content strong {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.admin-review-content span {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.admin-review-meta {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 48px;
+}
+
+.admin-review-meta strong {
+  color: var(--text-primary);
+  font-family: 'Manrope', sans-serif;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.admin-review-meta span {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.admin-review-action {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 5px;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (hover: hover) {
+  .admin-review-queue:hover {
+    background: var(--surface);
+    border-color: var(--green);
+    transform: translateY(-2px);
+  }
+}
+
+.admin-review-queue:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .admin-review-queue {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .admin-review-content {
+    flex-basis: calc(100% - 62px);
+  }
+
+  .admin-review-meta {
+    margin-left: 58px;
+    align-items: flex-start;
+  }
+
+  .admin-review-action {
+    margin-left: auto;
+  }
+}
+
 @media (hover: hover) {
 
 .admin-panel-link:hover {
