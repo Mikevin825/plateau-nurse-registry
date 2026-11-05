@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ShieldCheck,
@@ -11,28 +11,77 @@ import {
 import "./PublicVerify.css";
 import { verifyNursePublic, resolveMediaUrl } from "../apiService";
 
-const Icon = ({ children, size = 20 }) => <svg aria-hidden="true" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{children}</svg>;
-
-export default function PublicVerify() {
+function PublicVerify() {
   const [registryId, setRegistryId] = useState("");
   const [result, setResult] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const dialogRef = useRef(null);
-  const submitRef = useRef(null);
-  const closeRef = useRef(null);
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (result && !dialog.open) dialog.showModal();
-  }, [result]);
-
-  function closeResult() {
-    if (dialogRef.current?.open) dialogRef.current.close();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
     setResult(null);
-    requestAnimationFrame(() => submitRef.current?.focus());
-  }
+    setErrorMessage("");
+
+    const cleanId = registryId.trim().toUpperCase();
+
+    if (!cleanId) {
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const result = await verifyNursePublic(cleanId);
+      setResult(result);
+    } catch (error) {
+      setErrorMessage(error.message || "Nurse not found. Check the NANNM Registry ID and try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main className="verify-page">
+      {/* Navigation */}
+      <header className="auth-navbar">
+        <Link to="/" className="brand">
+          <div className="brand-icon">
+            <ShieldCheck size={27} />
+          </div>
+
+          <div className="brand-text">
+            <h2>Nurse Registry</h2>
+            <span>PLATEAU STATE</span>
+          </div>
+        </Link>
+
+        <Link to="/" className="back-link">
+          <ArrowLeft size={16} />
+          Back to home
+        </Link>
+      </header>
+
+      {/* Main Content */}
+      <section className="verify-container">
+        <div className="verify-heading">
+          <div className="verify-icon">
+            <ShieldCheck size={30} />
+          </div>
+
+          <span className="portal-label">PUBLIC VERIFICATION</span>
+
+          <h1>Verify a nurse's credentials</h1>
+
+          <p>
+            Confirm the registration and current licence status of a nursing
+            professional registered on the Plateau State Nurse Registry.
+          </p>
+        </div>
+
+        {/* Search Form */}
+        <div className="verify-card">
+          <div className="verify-card-heading">
+            <h2>Search nurse registry</h2>
 
             <p>
               Enter the nurse's official NANNM Registry ID to begin
@@ -126,3 +175,5 @@ export default function PublicVerify() {
     </main>
   )
 }
+
+export default PublicVerify
