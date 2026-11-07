@@ -79,7 +79,10 @@ function DigitalIDCard() {
               <div className="digital-card-body">
                 <div className="digital-card-photo">
                   {nurse.photo ? (
-                    <img src={resolveMediaUrl(nurse.photo)} alt={`${nurse.full_name} profile`} />
+                    <img
+                      src={resolveMediaUrl(nurse.photo)}
+                      alt={`${nurse.full_name} profile`}
+                    />
                   ) : (
                     <UserRound size={48} />
                   )}
@@ -151,6 +154,7 @@ function DigitalIDCard() {
             </section>
             <div className="digital-id-actions">
               <button
+                type="button"
                 className="digital-id-download"
                 onClick={() => window.print()}
               >

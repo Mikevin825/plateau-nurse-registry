@@ -451,3 +451,33 @@
     flex-direction: column;
   }
 }
+
+/* Print only the Digital ID card */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .digital-id-page .digital-id-card,
+  .digital-id-page .digital-id-card * {
+    visibility: visible !important;
+  }
+
+  .digital-id-page .digital-id-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: none;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
