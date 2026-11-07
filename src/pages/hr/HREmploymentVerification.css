@@ -68,7 +68,7 @@
 
 .hr-employment-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 27px;
 }
@@ -537,6 +537,30 @@
   justify-content: center;
   gap: 10px;
   margin-top: 23px;
+}
+
+.hr-employment-reject-button {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid #efc3c3;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #a52d2d;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hr-employment-reject-button:hover {
+    background: #fce1e1;
+  }
+}
+
+.hr-employment-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 @media (max-width: 900px) {

@@ -61,6 +61,7 @@ export const getNurseActivity = (token) => request("/nurse/activity/", { token }
 export const getNurseCard = (token) => request("/nurse/card/", { token });
 export const getHRNurses = (token) => request("/hr/nurses/", { token });
 export const confirmEmployment = (id, token) => request(`/hr/nurses/${id}/confirm/`, { token, method: "POST", body: "{}" });
+export const rejectEmployment = (id, token) => request(`/hr/nurses/${id}/reject/`, { token, method: "POST", body: "{}" });
 export const getEmployerOptions = () => request("/hr/employers/");
 export const registerHR = (values) => request("/hr/register/", { method: "POST", body: JSON.stringify(values) });
 export const getHRReviewQueue = (token) => request("/admin/hr-registrations/", { token });
@@ -114,7 +115,7 @@ export const uploadFile = async (url, file, token) => {
 
 export default {
   loginNurse, registerNurse, verifyNursePublic, getCurrentUser, logout, changePassword, requestPasswordReset, confirmPasswordReset, getAdminDocument,
-  getNurseProfile, getNurseActivity, getNurseCard, getHRNurses, confirmEmployment, getEmployerOptions, registerHR,
+  getNurseProfile, getNurseActivity, getNurseCard, getHRNurses, confirmEmployment, rejectEmployment, getEmployerOptions, registerHR,
   getHRReviewQueue, reviewHRRegistration, uploadRenewal, getRenewalQueue, reviewRenewal, getAdminSummary,
   getAdminNurses, reviewAdminNurse, updateAdminNurse, createAdminNurse, deleteAdminNurse,
   getAdminHRUsers, createAdminHRUser, updateAdminHRUser, deleteAdminHRUser,
