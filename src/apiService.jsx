@@ -26,8 +26,10 @@ export async function isDemoMode() {
       headers: { Accept: "application/json" },
     });
     const contentType = response.headers.get("content-type") || "";
-    // A JSON response means Django answered; an HTML fallback page means not.
-    demoMode = contentType.includes("application/json") ? false : true;
+    // Django answers 200 with JSON. A static host answers 404 — and Vercel
+    // negotiates that 404 into JSON when the client asks for it, so the
+    // status code has to be part of the check.
+    demoMode = response.ok && contentType.includes("application/json") ? false : true;
   } catch {
     demoMode = true;
   }
