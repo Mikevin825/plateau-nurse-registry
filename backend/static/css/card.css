@@ -1,0 +1,145 @@
+/* card.css – print-ready ID card */
+@page {
+  size: 85.6mm 54mm;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111827;
+}
+
+.card-layout {
+  max-width: 980px;
+  margin: 32px auto;
+  padding: 16px;
+}
+
+.card-sheet {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 85.6mm;
+  height: 54mm;
+  background: #fff;
+  border: 2px solid #111827;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.08);
+}
+
+.card-header {
+  text-align: center;
+  border-bottom: 1px solid #d1d5db;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+}
+
+.card-header h1 {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card-header p {
+  font-size: 10px;
+  margin: 2px 0 0;
+  color: #4b5563;
+}
+
+.card-body {
+  display: grid;
+  grid-template-columns: 20mm 1fr 22mm;
+  gap: 8px;
+  align-items: center;
+}
+
+.card-photo {
+  width: 20mm;
+  height: 24mm;
+  border: 1px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-info {
+  font-size: 8.5px;
+}
+
+.card-info p {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin: 3px 0;
+}
+
+.card-info strong {
+  color: #374151;
+}
+
+.card-info span {
+  text-align: right;
+  word-break: break-word;
+}
+
+.card-qr {
+  width: 22mm;
+  height: 22mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+  background: #fff;
+}
+
+.card-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-meta {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .navbar,
+  footer,
+  .card-actions,
+  .card-meta {
+    display: none !important;
+  }
+
+  .card-layout {
+    margin: 0;
+    padding: 0;
+  }
+}
