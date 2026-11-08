@@ -100,11 +100,17 @@ function DigitalIDCard() {
                   </div>
                 </div>
                 <div className="digital-card-qr">
-                  <img
-                    src={card.qr_url}
-                    alt={`Verification QR code for ${nurse.full_name}`}
-                  />
-                  <span>SCAN TO VERIFY</span>
+                  {card.qr_url ? (
+                    <img
+                      src={card.qr_url}
+                      alt={`Verification QR code for ${nurse.full_name}`}
+                    />
+                  ) : (
+                    <span className="digital-card-qr-placeholder">
+                      <ShieldCheck size={30} />
+                    </span>
+                  )}
+                  <span>{card.qr_url ? "SCAN TO VERIFY" : "OFFLINE DEMO"}</span>
                 </div>
               </div>
               <div className="digital-card-footer">

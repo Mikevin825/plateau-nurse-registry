@@ -30,6 +30,7 @@ import HREmploymentVerification from "./pages/hr/HREmploymentVerification";
 import HRReports from "./pages/hr/HRReports";
 import HRSettings from "./pages/hr/HRSettings";
 import AdminLayout from "./components/admin/AdminLayout";
+import DemoModeBanner from "./components/DemoModeBanner";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminNurseRegistry from "./pages/admin/AdminNurseRegistry";
 import AdminNurseProfile from "./pages/admin/AdminNurseProfile";
@@ -176,7 +177,9 @@ function WelcomePage() {
 
 function App() {
   return (
-    <Routes>
+    <>
+      <DemoModeBanner />
+      <Routes>
       <Route path="/" element={<WelcomePage />} />
 
       {/* Nurse authentication */}
@@ -241,7 +244,7 @@ function App() {
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </>
   );
 }
-
 export default App;

@@ -1,4 +1,39 @@
+import { demoFetch } from "./demo/demoApi";
+
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/$/, "");
+
+// Offline demonstration mode. When the Django API cannot be reached (for
+// example on the deployed Vercel build, which has no backend), requests are
+// answered from the generated fixture data in src/demo/.
+let demoMode = null;
+
+export async function isDemoMode() {
+  if (demoMode !== null) return demoMode;
+
+  // Allow forcing the mode for a quick check: ?demo=1 or ?demo=0
+  const forced = new URLSearchParams(window.location.search).get("demo");
+  if (forced === "1") {
+    demoMode = true;
+    return true;
+  }
+  if (forced === "0") {
+    demoMode = false;
+    return false;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}/hr/employers/`, {
+      headers: { Accept: "application/json" },
+    });
+    const contentType = response.headers.get("content-type") || "";
+    // A JSON response means Django answered; an HTML fallback page means not.
+    demoMode = contentType.includes("application/json") ? false : true;
+  } catch {
+    demoMode = true;
+  }
+  return demoMode;
+}
+
 export const resolveMediaUrl = (url) => {
   if (!url) return "";
   if (/^(https?:|data:|blob:)/i.test(url)) return url;
@@ -8,6 +43,10 @@ export const resolveMediaUrl = (url) => {
 };
 
 async function request(path, { token, ...options } = {}) {
+  if (await isDemoMode()) {
+    return demoFetch(path, options);
+  }
+
   const headers = new Headers(options.headers || {});
   if (token) headers.set("Authorization", `Token ${token}`);
   if (!(options.body instanceof FormData) && options.body !== undefined) {
@@ -53,6 +92,12 @@ export const confirmPasswordReset = (uid, token, newPassword) => request(
   { method: "POST", body: JSON.stringify({ new_password: newPassword }) },
 );
 export const getAdminDocument = async (id, token) => {
+  if (await isDemoMode()) {
+    return new Blob(
+      ["Offline demonstration mode — no licence document is stored."],
+      { type: "text/plain" },
+    );
+  }
   const response = await fetch(`${API_BASE}/admin/documents/${id}/content/`, { headers: { Authorization: `Token ${token}` } });
   if (!response.ok) throw new Error("Could not open this private document.");
   return response.blob();
@@ -106,6 +151,7 @@ export const updateAdminSupervisor = (id, values, token) => request(`/admin/supe
 export const deleteAdminSupervisor = (id, token) => request(`/admin/supervisors/${id}/`, { token, method: "DELETE" });
 
 export const uploadFile = async (url, file, token) => {
+  if (await isDemoMode()) return { ok: true };
   const body = new FormData();
   body.append("file", file);
   const response = await fetch(url, { method: "POST", body, headers: token ? { Authorization: `Token ${token}` } : {} });
